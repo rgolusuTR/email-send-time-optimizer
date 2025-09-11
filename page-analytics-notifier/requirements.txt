@@ -1,0 +1,10 @@
+Flask==2.3.3
+pandas==1.5.3
+numpy==1.24.3
+openpyxl==3.1.2
+APScheduler==3.10.4
+PyYAML==6.0.1
+sendgrid==6.10.0
+Werkzeug==2.3.7
+Jinja2==3.1.2
+python-dotenv==1.0.0

@@ -1,0 +1,50 @@
+# Page Analytics Notification System Configuration
+
+# Thresholds for alerts
+thresholds:
+  expired_page_days: 730 # 2 years
+  low_engagement_days: 30 # 30 days
+  low_engagement_views: 5 # Less than 5 views
+
+# Email configuration
+email:
+  # Thomson Reuters SMTP Configuration
+  smtp_server: "smtp.office365.com" # Thomson Reuters uses Office 365
+  smtp_port: 587
+  use_tls: true
+  sender_email: "raju.golusu@thomsonreuters.com" # Your Thomson Reuters email
+  sender_password: "your-password-here" # Your Thomson Reuters password or app password
+  sender_name: "Page Analytics Notification System"
+
+  # SendGrid fallback (optional)
+  sendgrid_api_key: "" # Configure if using SendGrid
+
+  # Default admin email for unmapped pages
+  default_admin_email: "raju.golusu@thomsonreuters.com"
+
+  # Additional email settings
+  reply_to: "noreply@thomsonreuters.com"
+  cc_emails: [] # Add emails to CC on all notifications
+  bcc_emails: [] # Add emails to BCC on all notifications
+
+# Scheduling
+scheduler:
+  enabled: true
+  # Cron format: minute hour day month day_of_week
+  cron_schedule: "0 9 * * 1" # Every Monday at 9 AM
+  timezone: "UTC"
+
+# Alert frequency (prevent spam)
+alert_frequency:
+  max_alerts_per_page_per_week: 1
+
+# File processing
+file_processing:
+  max_file_size_mb: 50
+  allowed_extensions: [".xlsx", ".xls"]
+
+# Logging
+logging:
+  level: "INFO"
+  max_log_files: 10
+  max_log_size_mb: 10

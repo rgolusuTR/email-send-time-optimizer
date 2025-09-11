@@ -1,0 +1,510 @@
+{% extends "base.html" %} {% block title %}Configuration - Page Analytics
+Notification System{% endblock %} {% block header %}System Configuration{%
+endblock %} {% block content %}
+<div class="row">
+  <!-- Email Configuration -->
+  <div class="col-md-6 mb-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">
+          <i class="fas fa-envelope"></i>
+          Email Configuration
+        </h5>
+      </div>
+      <div class="card-body">
+        {% if config.get('email') %}
+        <div class="table-responsive">
+          <table class="table table-sm">
+            <tr>
+              <td><strong>Sender Email:</strong></td>
+              <td>{{ config.email.get('sender_email', 'Not configured') }}</td>
+            </tr>
+            <tr>
+              <td><strong>Sender Name:</strong></td>
+              <td>{{ config.email.get('sender_name', 'Not configured') }}</td>
+            </tr>
+            <tr>
+              <td><strong>SMTP Server:</strong></td>
+              <td>{{ config.email.get('smtp_server', 'Not configured') }}</td>
+            </tr>
+            <tr>
+              <td><strong>SMTP Port:</strong></td>
+              <td>{{ config.email.get('smtp_port', 'Not configured') }}</td>
+            </tr>
+            <tr>
+              <td><strong>Use TLS:</strong></td>
+              <td>
+                {% if config.email.get('use_tls') %}
+                <span class="badge bg-success">Yes</span>
+                {% else %}
+                <span class="badge bg-secondary">No</span>
+                {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <td><strong>SendGrid API:</strong></td>
+              <td>
+                {% if config.email.get('sendgrid_api_key') %}
+                <span class="badge bg-success">Configured</span>
+                {% else %}
+                <span class="badge bg-secondary">Not configured</span>
+                {% endif %}
+              </td>
+            </tr>
+          </table>
+        </div>
+        {% else %}
+        <p class="text-muted">Email configuration not found.</p>
+        {% endif %}
+
+        <div class="mt-3">
+          <button class="btn btn-primary btn-sm" onclick="testEmailConfig()">
+            <i class="fas fa-envelope-open"></i>
+            Test Email Configuration
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Threshold Configuration -->
+  <div class="col-md-6 mb-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">
+          <i class="fas fa-sliders-h"></i>
+          Alert Thresholds
+        </h5>
+      </div>
+      <div class="card-body">
+        {% if config.get('thresholds') %}
+        <div class="table-responsive">
+          <table class="table table-sm">
+            <tr>
+              <td><strong>Expired Page Days:</strong></td>
+              <td>
+                <span class="badge bg-danger">
+                  {{ config.thresholds.get('expired_page_days', 730) }} days
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Low Engagement Days:</strong></td>
+              <td>
+                <span class="badge bg-warning">
+                  {{ config.thresholds.get('low_engagement_days', 30) }} days
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Low Engagement Views:</strong></td>
+              <td>
+                <span class="badge bg-warning">
+                  {{ config.thresholds.get('low_engagement_views', 5) }} views
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Alert Cooldown:</strong></td>
+              <td>
+                <span class="badge bg-info">
+                  {{ config.thresholds.get('alert_cooldown_days', 7) }} days
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        {% else %}
+        <p class="text-muted">Threshold configuration not found.</p>
+        {% endif %}
+
+        <div class="alert alert-info mt-3">
+          <small>
+            <strong>Note:</strong> Thresholds can be modified in the
+            <code>config/settings.yaml</code> file.
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <!-- Scheduler Configuration -->
+  <div class="col-md-6 mb-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">
+          <i class="fas fa-clock"></i>
+          Scheduler Configuration
+        </h5>
+      </div>
+      <div class="card-body">
+        {% if config.get('scheduler') %}
+        <div class="table-responsive">
+          <table class="table table-sm">
+            <tr>
+              <td><strong>Enabled:</strong></td>
+              <td>
+                {% if config.scheduler.get('enabled') %}
+                <span class="badge bg-success">Yes</span>
+                {% else %}
+                <span class="badge bg-secondary">No</span>
+                {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Cron Schedule:</strong></td>
+              <td>
+                <code
+                  >{{ config.scheduler.get('cron_schedule', '0 9 * * 1')
+                  }}</code
+                >
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Timezone:</strong></td>
+              <td>{{ config.scheduler.get('timezone', 'UTC') }}</td>
+            </tr>
+            <tr>
+              <td><strong>Auto Start:</strong></td>
+              <td>
+                {% if config.scheduler.get('auto_start') %}
+                <span class="badge bg-success">Yes</span>
+                {% else %}
+                <span class="badge bg-secondary">No</span>
+                {% endif %}
+              </td>
+            </tr>
+          </table>
+        </div>
+        {% else %}
+        <p class="text-muted">Scheduler configuration not found.</p>
+        {% endif %}
+
+        <div class="alert alert-info mt-3">
+          <small>
+            <strong>Cron Format:</strong> minute hour day month day_of_week<br />
+            <strong>Example:</strong> <code>0 9 * * 1</code> = Every Monday at
+            9:00 AM
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- System Information -->
+  <div class="col-md-6 mb-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">
+          <i class="fas fa-info-circle"></i>
+          System Information
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-sm">
+            <tr>
+              <td><strong>Version:</strong></td>
+              <td>1.0.0</td>
+            </tr>
+            <tr>
+              <td><strong>Database:</strong></td>
+              <td>SQLite</td>
+            </tr>
+            <tr>
+              <td><strong>Upload Directory:</strong></td>
+              <td><code>uploads/</code></td>
+            </tr>
+            <tr>
+              <td><strong>Log Directory:</strong></td>
+              <td><code>logs/</code></td>
+            </tr>
+            <tr>
+              <td><strong>Data Directory:</strong></td>
+              <td><code>data/</code></td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="mt-3">
+          <a
+            href="/api/stats"
+            class="btn btn-outline-primary btn-sm"
+            target="_blank"
+          >
+            <i class="fas fa-chart-bar"></i>
+            View API Stats
+          </a>
+          <a
+            href="/api/alerts"
+            class="btn btn-outline-secondary btn-sm"
+            target="_blank"
+          >
+            <i class="fas fa-list"></i>
+            View API Alerts
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Stakeholder Configuration -->
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div
+        class="card-header d-flex justify-content-between align-items-center"
+      >
+        <h5 class="mb-0">
+          <i class="fas fa-users"></i>
+          Stakeholder Mapping Configuration
+        </h5>
+        {% if validation_results %} {% if validation_results.get('valid') %}
+        <span class="badge bg-success">Valid Configuration</span>
+        {% else %}
+        <span class="badge bg-danger">Configuration Issues</span>
+        {% endif %} {% endif %}
+      </div>
+      <div class="card-body">
+        <!-- Validation Results -->
+        {% if validation_results %}
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <h5 class="text-primary">
+                  {{ validation_results.get('email_count', 0) }}
+                </h5>
+                <p class="mb-0 small">Unique Emails</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <h5 class="text-info">
+                  {{ validation_results.get('pattern_count', 0) }}
+                </h5>
+                <p class="mb-0 small">URL Patterns</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <h5 class="text-danger">
+                  {{ validation_results.get('errors', [])|length }}
+                </h5>
+                <p class="mb-0 small">Errors</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <h5 class="text-warning">
+                  {{ validation_results.get('warnings', [])|length }}
+                </h5>
+                <p class="mb-0 small">Warnings</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Validation Errors -->
+        {% if validation_results.get('errors') %}
+        <div class="alert alert-danger">
+          <h6>
+            <i class="fas fa-exclamation-triangle"></i> Configuration Errors:
+          </h6>
+          <ul class="mb-0">
+            {% for error in validation_results.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        <!-- Validation Warnings -->
+        {% if validation_results.get('warnings') %}
+        <div class="alert alert-warning">
+          <h6>
+            <i class="fas fa-exclamation-circle"></i> Configuration Warnings:
+          </h6>
+          <ul class="mb-0">
+            {% for warning in validation_results.warnings %}
+            <li>{{ warning }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %} {% endif %}
+
+        <!-- Configuration Sections -->
+        {% if stakeholder_config.get('stakeholders') %}
+        <div class="row">
+          <!-- Exact Matches -->
+          <div class="col-md-4">
+            <h6>Exact URL Matches</h6>
+            {% if stakeholder_config.stakeholders.get('exact_matches') %}
+            <div class="table-responsive">
+              <table class="table table-sm table-striped">
+                <thead>
+                  <tr>
+                    <th>URL</th>
+                    <th>Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for url, email in
+                  stakeholder_config.stakeholders.exact_matches.items() %}
+                  <tr>
+                    <td>
+                      <code
+                        >{{ url[:30] }}{% if url|length > 30 %}...{% endif
+                        %}</code
+                      >
+                    </td>
+                    <td><small>{{ email }}</small></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            {% else %}
+            <p class="text-muted small">No exact matches configured.</p>
+            {% endif %}
+          </div>
+
+          <!-- Pattern Matches -->
+          <div class="col-md-4">
+            <h6>URL Pattern Matches</h6>
+            {% if stakeholder_config.stakeholders.get('pattern_matches') %}
+            <div class="table-responsive">
+              <table class="table table-sm table-striped">
+                <thead>
+                  <tr>
+                    <th>Pattern</th>
+                    <th>Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for pattern, email in
+                  stakeholder_config.stakeholders.pattern_matches.items() %}
+                  <tr>
+                    <td>
+                      <code
+                        >{{ pattern[:30] }}{% if pattern|length > 30 %}...{%
+                        endif %}</code
+                      >
+                    </td>
+                    <td><small>{{ email }}</small></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            {% else %}
+            <p class="text-muted small">No pattern matches configured.</p>
+            {% endif %}
+          </div>
+
+          <!-- Department Fallbacks -->
+          <div class="col-md-4">
+            <h6>Department Fallbacks</h6>
+            {% if stakeholder_config.stakeholders.get('department_fallbacks') %}
+            <div class="table-responsive">
+              <table class="table table-sm table-striped">
+                <thead>
+                  <tr>
+                    <th>Department</th>
+                    <th>Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for dept, email in
+                  stakeholder_config.stakeholders.department_fallbacks.items()
+                  %}
+                  <tr>
+                    <td><strong>{{ dept }}</strong></td>
+                    <td><small>{{ email }}</small></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            {% else %}
+            <p class="text-muted small">No department fallbacks configured.</p>
+            {% endif %}
+          </div>
+        </div>
+        {% else %}
+        <p class="text-muted">Stakeholder configuration not found.</p>
+        {% endif %}
+
+        <div class="mt-3">
+          <button
+            class="btn btn-primary btn-sm"
+            onclick="validateStakeholderConfig()"
+          >
+            <i class="fas fa-check-circle"></i>
+            Validate Configuration
+          </button>
+          <a
+            href="/static/sample_stakeholders.yaml"
+            class="btn btn-outline-secondary btn-sm"
+            download
+          >
+            <i class="fas fa-download"></i>
+            Download Sample Config
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function testEmailConfig() {
+    const email = prompt("Enter email address to test:");
+    if (email) {
+      fetch("/api/test-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            alert("Test email sent successfully!");
+          } else {
+            alert("Failed to send test email: " + data.error);
+          }
+        })
+        .catch((error) => {
+          alert("Error: " + error);
+        });
+    }
+  }
+
+  function validateStakeholderConfig() {
+    fetch("/api/validate-stakeholders")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.valid) {
+          alert("Stakeholder configuration is valid!");
+        } else {
+          alert("Configuration issues found. Check the page for details.");
+        }
+        location.reload();
+      })
+      .catch((error) => {
+        alert("Error: " + error);
+      });
+  }
+</script>
+{% endblock %}

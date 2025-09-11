@@ -1,0 +1,550 @@
+2025-07-13 00:01:15,833 - root - INFO - Database initialized successfully
+2025-07-13 00:01:15,833 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-13 00:01:15,833 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-13 00:01:15,848 - apscheduler.scheduler - INFO - Added job "Page Analytics Processing" to job store "default"
+2025-07-13 00:01:15,848 - apscheduler.scheduler - INFO - Added job "Database Cleanup" to job store "default"
+2025-07-13 00:01:15,848 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-13 00:01:15,849 - root - INFO - Scheduler started with cron schedule: 0 9 * * 1
+2025-07-13 00:01:15,876 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.6:5000
+2025-07-13 00:01:15,876 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-13 00:01:15,883 - werkzeug - INFO -  * Restarting with stat
+2025-07-13 00:01:16,568 - root - INFO - Database initialized successfully
+2025-07-13 00:01:16,568 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-13 00:01:16,568 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-13 00:01:16,581 - apscheduler.scheduler - INFO - Added job "Page Analytics Processing" to job store "default"
+2025-07-13 00:01:16,581 - apscheduler.scheduler - INFO - Added job "Database Cleanup" to job store "default"
+2025-07-13 00:01:16,581 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-13 00:01:16,582 - root - INFO - Scheduler started with cron schedule: 0 9 * * 1
+2025-07-13 00:01:16,590 - werkzeug - WARNING -  * Debugger is active!
+2025-07-13 00:01:16,593 - werkzeug - INFO -  * Debugger PIN: 120-148-571
+2025-07-13 00:04:51,262 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:04:51] "GET / HTTP/1.1" 200 -
+2025-07-13 00:04:51,792 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:04:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-13 00:05:10,383 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:05:10] "GET /upload HTTP/1.1" 200 -
+2025-07-13 00:05:32,557 - root - ERROR - Error loading configuration: Unexpected end of template. Jinja was looking for the following tags: 'endfor' or 'else'. The innermost block that needs to be closed is 'for'.
+2025-07-13 00:05:32,570 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:05:32] "[35m[1mGET /configuration HTTP/1.1[0m" 500 -
+2025-07-13 00:05:32,651 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:05:32] "GET /configuration?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-07-13 00:05:32,653 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:05:32] "GET /configuration?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-07-13 00:05:32,676 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:05:32] "GET /configuration?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-07-13 00:05:32,676 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:05:32] "[36mGET /configuration?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-07-13 00:07:11,847 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:07:11] "GET /configuration HTTP/1.1" 200 -
+2025-07-13 00:07:12,217 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:07:12] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-13 00:08:39,879 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:08:39] "GET / HTTP/1.1" 200 -
+2025-07-13 00:08:40,267 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:08:40] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-13 00:08:48,699 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:08:48] "GET / HTTP/1.1" 200 -
+2025-07-13 00:08:49,082 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:08:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-13 00:12:09,633 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:12:09] "GET /upload HTTP/1.1" 200 -
+2025-07-13 00:12:26,943 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:12:26] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2025-07-13 00:12:27,327 - root - INFO - Successfully read Excel file: uploads\20250713_001226_page-exp.xlsx
+2025-07-13 00:12:27,332 - root - ERROR - Missing required columns: ['Page URL', 'Creation Date', 'Page Views']
+2025-07-13 00:12:27,334 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:12:27] "[32mGET /process/20250713_001226_page-exp.xlsx HTTP/1.1[0m" 302 -
+2025-07-13 00:12:27,338 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:12:27] "GET /upload HTTP/1.1" 200 -
+2025-07-13 00:14:14,953 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:14:14] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2025-07-13 00:14:14,985 - root - INFO - Successfully read Excel file: uploads\20250713_001414_page-exp.xlsx
+2025-07-13 00:14:15,007 - root - INFO - Data cleaned: 3 -> 0 rows
+2025-07-13 00:14:15,007 - root - INFO - Excel file processed successfully. Found 0 rows
+2025-07-13 00:14:15,007 - root - ERROR - Error generating data summary: NaTType does not support strftime
+2025-07-13 00:14:15,020 - root - INFO - Analysis complete: 0 expired pages, 0 low engagement pages
+2025-07-13 00:14:15,052 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:14:15] "GET /process/20250713_001414_page-exp.xlsx HTTP/1.1" 200 -
+2025-07-13 00:15:06,064 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:15:06] "GET /upload HTTP/1.1" 200 -
+2025-07-13 00:16:11,339 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:16:11] "GET /upload HTTP/1.1" 200 -
+2025-07-13 00:16:20,373 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:16:20] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2025-07-13 00:16:20,390 - root - INFO - Successfully read Excel file: uploads\20250713_001620_page-exp.xlsx
+2025-07-13 00:16:20,406 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-13 00:16:20,406 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-13 00:16:20,423 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-13 00:16:20,423 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:16:20] "GET /process/20250713_001620_page-exp.xlsx HTTP/1.1" 200 -
+2025-07-13 00:16:37,039 - root - INFO - Successfully read Excel file: uploads\20250713_001620_page-exp.xlsx
+2025-07-13 00:16:37,056 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-13 00:16:37,056 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-13 00:16:37,060 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-13 00:16:37,060 - root - ERROR - SMTP credentials not configured
+2025-07-13 00:16:37,070 - root - INFO - Alert logged with ID: 1
+2025-07-13 00:16:37,071 - root - ERROR - SMTP credentials not configured
+2025-07-13 00:16:37,076 - root - INFO - Alert logged with ID: 2
+2025-07-13 00:16:37,078 - root - INFO - Processing run logged with ID: 1
+2025-07-13 00:16:37,078 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:16:37] "POST /send_alerts/20250713_001620_page-exp.xlsx HTTP/1.1" 200 -
+2025-07-13 00:16:47,659 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:16:47] "GET / HTTP/1.1" 200 -
+2025-07-13 00:17:01,939 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:17:01] "GET /configuration HTTP/1.1" 200 -
+2025-07-13 00:18:03,207 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:18:03] "[33mPOST /api/test-email HTTP/1.1[0m" 404 -
+2025-07-13 00:18:26,952 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:18:26] "[33mPOST /api/test-email HTTP/1.1[0m" 404 -
+2025-07-13 00:18:52,253 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:18:52] "[33mGET /api/validate-stakeholders HTTP/1.1[0m" 404 -
+2025-07-13 00:18:55,671 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:18:55] "[33mGET /static/sample_stakeholders.yaml HTTP/1.1[0m" 404 -
+2025-07-13 00:19:24,230 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:19:24] "[33mGET /static/sample_stakeholders.yaml HTTP/1.1[0m" 404 -
+2025-07-13 00:19:42,365 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:19:42] "GET / HTTP/1.1" 200 -
+2025-07-13 00:19:57,843 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:19:57] "GET /configuration HTTP/1.1" 200 -
+2025-07-13 00:20:14,016 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:20:14] "GET /api/stats HTTP/1.1" 200 -
+2025-07-13 00:20:19,418 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:20:19] "GET /api/alerts HTTP/1.1" 200 -
+2025-07-13 00:20:33,034 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:20:33] "GET / HTTP/1.1" 200 -
+2025-07-13 00:20:40,664 - root - ERROR - SMTP credentials not configured
+2025-07-13 00:20:40,664 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:20:40] "POST /test_email HTTP/1.1" 200 -
+2025-07-13 00:20:46,299 - root - ERROR - SMTP credentials not configured
+2025-07-13 00:20:46,309 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:20:46] "POST /test_email HTTP/1.1" 200 -
+2025-07-13 00:20:53,734 - root - ERROR - SMTP credentials not configured
+2025-07-13 00:20:53,744 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:20:53] "POST /test_email HTTP/1.1" 200 -
+2025-07-13 00:21:13,777 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:21:13] "GET /configuration HTTP/1.1" 200 -
+2025-07-13 00:21:41,056 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:21:41] "[33mPOST /api/test-email HTTP/1.1[0m" 404 -
+2025-07-13 00:23:41,022 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:23:41] "GET /upload HTTP/1.1" 200 -
+2025-07-13 00:23:57,438 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:23:57] "GET / HTTP/1.1" 200 -
+2025-07-13 00:23:58,960 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:23:58] "GET /upload HTTP/1.1" 200 -
+2025-07-13 00:23:59,804 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:23:59] "GET /configuration HTTP/1.1" 200 -
+2025-07-13 00:24:09,697 - werkzeug - INFO -  * Detected change in 'C:\\Users\\0143586\\.vscode\\work\\page-analytics-notifier\\app.py', reloading
+2025-07-13 00:24:09,899 - werkzeug - INFO -  * Restarting with stat
+2025-07-13 00:24:10,749 - root - INFO - Database initialized successfully
+2025-07-13 00:24:10,761 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-13 00:24:10,761 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-13 00:24:10,762 - apscheduler.scheduler - INFO - Added job "Page Analytics Processing" to job store "default"
+2025-07-13 00:24:10,762 - apscheduler.scheduler - INFO - Added job "Database Cleanup" to job store "default"
+2025-07-13 00:24:10,762 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-13 00:24:10,762 - root - INFO - Scheduler started with cron schedule: 0 9 * * 1
+2025-07-13 00:24:10,773 - werkzeug - WARNING -  * Debugger is active!
+2025-07-13 00:24:10,782 - werkzeug - INFO -  * Debugger PIN: 120-148-571
+2025-07-13 00:24:27,374 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:24:27] "GET /configuration HTTP/1.1" 200 -
+2025-07-13 00:26:44,626 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:26:44] "GET /configuration HTTP/1.1" 200 -
+2025-07-13 00:26:45,009 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:26:45] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-13 00:28:06,312 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:28:06] "GET /configuration HTTP/1.1" 200 -
+2025-07-13 00:28:22,531 - root - ERROR - Error sending email via SMTP: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 41be03b00d2f7-b3bbe723d3dsm7111514a12.67 - gsmtp')
+2025-07-13 00:28:22,546 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:28:22] "POST /api/test-email HTTP/1.1" 200 -
+2025-07-13 00:28:30,257 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:28:30] "GET / HTTP/1.1" 200 -
+2025-07-13 00:28:32,973 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:28:32] "GET / HTTP/1.1" 200 -
+2025-07-13 00:28:34,913 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:28:34] "GET / HTTP/1.1" 200 -
+2025-07-13 00:28:45,143 - root - ERROR - Error sending email via SMTP: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-23de4322b2dsm68376885ad.92 - gsmtp')
+2025-07-13 00:28:45,145 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:28:45] "POST /test_email HTTP/1.1" 200 -
+2025-07-13 00:32:07,411 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:32:07] "GET /upload HTTP/1.1" 200 -
+2025-07-13 00:32:09,357 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:32:09] "GET / HTTP/1.1" 200 -
+2025-07-13 00:32:10,323 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:32:10] "GET /upload HTTP/1.1" 200 -
+2025-07-13 00:32:10,759 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:32:10] "GET /configuration HTTP/1.1" 200 -
+2025-07-13 00:32:16,478 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:32:16] "GET /api/validate-stakeholders HTTP/1.1" 200 -
+2025-07-13 00:32:18,312 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:32:18] "GET /configuration HTTP/1.1" 200 -
+2025-07-13 00:32:20,178 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:32:20] "GET /api/validate-stakeholders HTTP/1.1" 200 -
+2025-07-13 00:32:24,945 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:32:24] "GET /configuration HTTP/1.1" 200 -
+2025-07-13 00:32:44,253 - root - ERROR - Error sending email via SMTP: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 98e67ed59e1d1-31c22fa7db3sm10486800a91.1 - gsmtp')
+2025-07-13 00:32:44,254 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:32:44] "POST /api/test-email HTTP/1.1" 200 -
+2025-07-13 00:38:56,402 - root - INFO - Database initialized successfully
+2025-07-13 00:38:56,419 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-13 00:38:56,419 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-13 00:38:56,419 - apscheduler.scheduler - INFO - Added job "Page Analytics Processing" to job store "default"
+2025-07-13 00:38:56,419 - apscheduler.scheduler - INFO - Added job "Database Cleanup" to job store "default"
+2025-07-13 00:38:56,419 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-13 00:38:56,419 - root - INFO - Scheduler started with cron schedule: 0 9 * * 1
+2025-07-13 00:38:56,439 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.6:5000
+2025-07-13 00:38:56,439 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-13 00:38:56,439 - werkzeug - INFO -  * Restarting with stat
+2025-07-13 00:38:57,019 - root - INFO - Database initialized successfully
+2025-07-13 00:38:57,034 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-13 00:38:57,034 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-13 00:38:57,035 - apscheduler.scheduler - INFO - Added job "Page Analytics Processing" to job store "default"
+2025-07-13 00:38:57,035 - apscheduler.scheduler - INFO - Added job "Database Cleanup" to job store "default"
+2025-07-13 00:38:57,036 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-13 00:38:57,036 - root - INFO - Scheduler started with cron schedule: 0 9 * * 1
+2025-07-13 00:38:57,036 - werkzeug - WARNING -  * Debugger is active!
+2025-07-13 00:38:57,036 - werkzeug - INFO -  * Debugger PIN: 120-148-571
+2025-07-13 00:40:53,092 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:40:53] "GET / HTTP/1.1" 200 -
+2025-07-13 00:40:53,435 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:40:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-13 00:41:07,456 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:41:07] "GET /upload HTTP/1.1" 200 -
+2025-07-13 00:41:29,638 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:41:29] "GET /configuration HTTP/1.1" 200 -
+2025-07-13 00:42:30,242 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:42:30] "GET / HTTP/1.1" 200 -
+2025-07-13 00:43:45,862 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:43:45] "GET / HTTP/1.1" 200 -
+2025-07-13 00:43:59,254 - root - ERROR - Error sending email via SMTP: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-23de434141fsm66607755ad.168 - gsmtp')
+2025-07-13 00:43:59,254 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:43:59] "POST /test_email HTTP/1.1" 200 -
+2025-07-13 00:44:31,651 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:44:31] "GET /upload HTTP/1.1" 200 -
+2025-07-13 00:44:50,456 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:44:50] "GET / HTTP/1.1" 200 -
+2025-07-13 00:45:23,343 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:45:23] "GET /upload HTTP/1.1" 200 -
+2025-07-13 00:45:30,413 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:45:30] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2025-07-13 00:45:30,880 - root - INFO - Successfully read Excel file: uploads\20250713_004530_page-exp.xlsx
+2025-07-13 00:45:30,896 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-13 00:45:30,896 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-13 00:45:30,913 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-13 00:45:30,944 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:45:30] "GET /process/20250713_004530_page-exp.xlsx HTTP/1.1" 200 -
+2025-07-13 00:45:44,144 - root - INFO - Successfully read Excel file: uploads\20250713_004530_page-exp.xlsx
+2025-07-13 00:45:44,145 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-13 00:45:44,145 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-13 00:45:44,145 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-13 00:45:46,229 - root - ERROR - Error sending email via SMTP: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-23de4322a8bsm72078115ad.95 - gsmtp')
+2025-07-13 00:45:46,246 - root - INFO - Alert logged with ID: 3
+2025-07-13 00:45:48,295 - root - ERROR - Error sending email via SMTP: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-74ec3bd0bcesm5186406b3a.26 - gsmtp')
+2025-07-13 00:45:48,322 - root - INFO - Alert logged with ID: 4
+2025-07-13 00:45:48,345 - root - INFO - Processing run logged with ID: 2
+2025-07-13 00:45:48,345 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:45:48] "POST /send_alerts/20250713_004530_page-exp.xlsx HTTP/1.1" 200 -
+2025-07-13 00:46:02,529 - root - INFO - Successfully read Excel file: uploads\20250713_004530_page-exp.xlsx
+2025-07-13 00:46:02,529 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-13 00:46:02,529 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-13 00:46:02,547 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-13 00:46:02,547 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 00:46:02] "GET /process/20250713_004530_page-exp.xlsx HTTP/1.1" 200 -
+2025-07-13 09:43:57,836 - root - INFO - Database initialized successfully
+2025-07-13 09:43:57,836 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-13 09:43:57,836 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-13 09:43:57,836 - apscheduler.scheduler - INFO - Added job "Page Analytics Processing" to job store "default"
+2025-07-13 09:43:57,836 - apscheduler.scheduler - INFO - Added job "Database Cleanup" to job store "default"
+2025-07-13 09:43:57,836 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-13 09:43:57,836 - root - INFO - Scheduler started with cron schedule: 0 9 * * 1
+2025-07-13 09:43:57,872 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.6:5000
+2025-07-13 09:43:57,872 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-13 09:43:57,872 - werkzeug - INFO -  * Restarting with stat
+2025-07-13 09:43:58,503 - root - INFO - Database initialized successfully
+2025-07-13 09:43:58,519 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-13 09:43:58,519 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-13 09:43:58,519 - apscheduler.scheduler - INFO - Added job "Page Analytics Processing" to job store "default"
+2025-07-13 09:43:58,519 - apscheduler.scheduler - INFO - Added job "Database Cleanup" to job store "default"
+2025-07-13 09:43:58,519 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-13 09:43:58,519 - root - INFO - Scheduler started with cron schedule: 0 9 * * 1
+2025-07-13 09:43:58,535 - werkzeug - WARNING -  * Debugger is active!
+2025-07-13 09:43:58,546 - werkzeug - INFO -  * Debugger PIN: 120-148-571
+2025-07-13 09:47:09,408 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:47:09] "GET / HTTP/1.1" 200 -
+2025-07-13 09:47:10,060 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:47:10] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-13 09:47:47,295 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:47:47] "GET / HTTP/1.1" 200 -
+2025-07-13 09:47:56,392 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:47:56] "GET /upload HTTP/1.1" 200 -
+2025-07-13 09:48:03,759 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:48:03] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2025-07-13 09:48:04,676 - root - INFO - Successfully read Excel file: uploads\20250713_094803_page-exp.xlsx
+2025-07-13 09:48:04,692 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-13 09:48:04,692 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-13 09:48:04,710 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-13 09:48:04,741 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:48:04] "GET /process/20250713_094803_page-exp.xlsx HTTP/1.1" 200 -
+2025-07-13 09:48:12,276 - root - INFO - Successfully read Excel file: uploads\20250713_094803_page-exp.xlsx
+2025-07-13 09:48:12,276 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-13 09:48:12,291 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-13 09:48:12,293 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-13 09:48:14,259 - root - ERROR - Error sending email via SMTP: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-74eb9f856fdsm7965830b3a.144 - gsmtp')
+2025-07-13 09:48:14,285 - root - INFO - Alert logged with ID: 5
+2025-07-13 09:48:16,242 - root - ERROR - Error sending email via SMTP: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-23de432278csm75745375ad.121 - gsmtp')
+2025-07-13 09:48:16,275 - root - INFO - Alert logged with ID: 6
+2025-07-13 09:48:16,278 - root - INFO - Processing run logged with ID: 3
+2025-07-13 09:48:16,278 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:48:16] "POST /send_alerts/20250713_094803_page-exp.xlsx HTTP/1.1" 200 -
+2025-07-13 09:48:26,895 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:48:26] "GET / HTTP/1.1" 200 -
+2025-07-13 09:48:34,628 - root - ERROR - Error sending email via SMTP: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 98e67ed59e1d1-31c3e95815bsm7865989a91.3 - gsmtp')
+2025-07-13 09:48:34,643 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:48:34] "POST /test_email HTTP/1.1" 200 -
+2025-07-13 09:49:01,120 - root - ERROR - Error sending email via SMTP: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-23de4365ef7sm69930055ad.249 - gsmtp')
+2025-07-13 09:49:01,120 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:49:01] "POST /test_email HTTP/1.1" 200 -
+2025-07-13 09:51:38,941 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:51:38] "GET / HTTP/1.1" 200 -
+2025-07-13 09:51:39,664 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:51:39] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-13 09:51:56,625 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:51:56] "GET /configuration HTTP/1.1" 200 -
+2025-07-13 09:52:39,722 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:52:39] "GET / HTTP/1.1" 200 -
+2025-07-13 09:52:46,483 - root - ERROR - SMTP credentials not configured
+2025-07-13 09:52:46,483 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:52:46] "POST /test_email HTTP/1.1" 200 -
+2025-07-13 09:52:49,970 - root - ERROR - SMTP credentials not configured
+2025-07-13 09:52:49,983 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:52:49] "POST /test_email HTTP/1.1" 200 -
+2025-07-13 09:52:54,249 - root - ERROR - SMTP credentials not configured
+2025-07-13 09:52:54,250 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:52:54] "POST /test_email HTTP/1.1" 200 -
+2025-07-13 09:55:11,579 - werkzeug - INFO -  * Detected change in 'C:\\Users\\0143586\\.vscode\\work\\page-analytics-notifier\\modules\\email_service.py', reloading
+2025-07-13 09:55:11,682 - werkzeug - INFO -  * Restarting with stat
+2025-07-13 09:55:12,352 - root - INFO - Database initialized successfully
+2025-07-13 09:55:12,369 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-13 09:55:12,369 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-13 09:55:12,369 - apscheduler.scheduler - INFO - Added job "Page Analytics Processing" to job store "default"
+2025-07-13 09:55:12,369 - apscheduler.scheduler - INFO - Added job "Database Cleanup" to job store "default"
+2025-07-13 09:55:12,369 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-13 09:55:12,369 - root - INFO - Scheduler started with cron schedule: 0 9 * * 1
+2025-07-13 09:55:12,388 - werkzeug - WARNING -  * Debugger is active!
+2025-07-13 09:55:12,388 - werkzeug - INFO -  * Debugger PIN: 120-148-571
+2025-07-13 09:56:10,847 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:56:10] "GET / HTTP/1.1" 200 -
+2025-07-13 09:56:11,216 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:56:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-13 09:57:28,272 - root - ERROR - Email credentials contain placeholder values. Please configure with actual credentials.
+2025-07-13 09:57:28,272 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 09:57:28] "POST /test_email HTTP/1.1" 200 -
+2025-07-13 10:09:22,957 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 10:09:22] "GET / HTTP/1.1" 200 -
+2025-07-13 10:09:28,730 - root - ERROR - Email credentials contain placeholder values. Please configure with actual credentials.
+2025-07-13 10:09:28,730 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 10:09:28] "POST /test_email HTTP/1.1" 200 -
+2025-07-13 10:12:56,224 - werkzeug - INFO -  * Detected change in 'C:\\Users\\0143586\\.vscode\\work\\page-analytics-notifier\\modules\\email_service.py', reloading
+2025-07-13 10:12:56,292 - werkzeug - INFO -  * Restarting with stat
+2025-07-13 10:12:57,024 - root - INFO - Database initialized successfully
+2025-07-13 10:12:57,033 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-13 10:12:57,033 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-13 10:12:57,034 - apscheduler.scheduler - INFO - Added job "Page Analytics Processing" to job store "default"
+2025-07-13 10:12:57,034 - apscheduler.scheduler - INFO - Added job "Database Cleanup" to job store "default"
+2025-07-13 10:12:57,034 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-13 10:12:57,036 - root - INFO - Scheduler started with cron schedule: 0 9 * * 1
+2025-07-13 10:12:57,043 - werkzeug - WARNING -  * Debugger is active!
+2025-07-13 10:12:57,046 - werkzeug - INFO -  * Debugger PIN: 120-148-571
+2025-07-13 10:13:30,177 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 10:13:30] "GET / HTTP/1.1" 200 -
+2025-07-13 10:13:46,978 - root - ERROR - Email credentials contain placeholder values. Please configure with actual credentials.
+2025-07-13 10:13:46,978 - root - ERROR - For Thomson Reuters: Replace 'your-password-here' with your actual password or app password.
+2025-07-13 10:13:46,978 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 10:13:46] "POST /test_email HTTP/1.1" 200 -
+2025-07-13 14:26:52,230 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 14:26:52] "GET /upload HTTP/1.1" 200 -
+2025-07-13 19:20:08,805 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 19:20:08] "GET / HTTP/1.1" 200 -
+2025-07-13 19:20:12,003 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 19:20:12] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-13 19:54:09,284 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 19:54:09] "GET / HTTP/1.1" 200 -
+2025-07-13 19:54:12,398 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 19:54:12] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-13 21:14:52,587 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 21:14:52] "GET / HTTP/1.1" 200 -
+2025-07-13 21:21:08,552 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 21:21:08] "GET / HTTP/1.1" 200 -
+2025-07-13 21:21:16,983 - root - ERROR - Email credentials contain placeholder values. Please configure with actual credentials.
+2025-07-13 21:21:16,983 - root - ERROR - For Thomson Reuters: Replace 'your-password-here' with your actual password or app password.
+2025-07-13 21:21:16,983 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 21:21:16] "POST /test_email HTTP/1.1" 200 -
+2025-07-13 21:21:22,637 - root - ERROR - Email credentials contain placeholder values. Please configure with actual credentials.
+2025-07-13 21:21:22,637 - root - ERROR - For Thomson Reuters: Replace 'your-password-here' with your actual password or app password.
+2025-07-13 21:21:22,637 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 21:21:22] "POST /test_email HTTP/1.1" 200 -
+2025-07-13 21:21:29,917 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 21:21:29] "GET / HTTP/1.1" 200 -
+2025-07-13 21:21:36,718 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 21:21:36] "GET /?lok HTTP/1.1" 200 -
+2025-07-13 21:23:11,970 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 21:23:11] "GET / HTTP/1.1" 200 -
+2025-07-14 13:32:31,257 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:32:31] "GET /upload HTTP/1.1" 200 -
+2025-07-14 13:32:37,263 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:32:37] "GET / HTTP/1.1" 200 -
+2025-07-14 13:32:48,518 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:32:48] "GET /upload HTTP/1.1" 200 -
+2025-07-14 13:33:04,954 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:33:04] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2025-07-14 13:33:05,626 - root - INFO - Successfully read Excel file: uploads\20250714_133304_page-exp.xlsx
+2025-07-14 13:33:05,640 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-14 13:33:05,641 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-14 13:33:05,655 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-14 13:33:05,669 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:33:05] "GET /process/20250714_133304_page-exp.xlsx HTTP/1.1" 200 -
+2025-07-14 13:33:12,392 - root - INFO - Successfully read Excel file: uploads\20250714_133304_page-exp.xlsx
+2025-07-14 13:33:12,399 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-14 13:33:12,399 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-14 13:33:12,407 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-14 13:33:12,412 - root - ERROR - Email credentials contain placeholder values. Please configure with actual credentials.
+2025-07-14 13:33:12,413 - root - ERROR - For Thomson Reuters: Replace 'your-password-here' with your actual password or app password.
+2025-07-14 13:33:12,420 - root - INFO - Alert logged with ID: 7
+2025-07-14 13:33:12,421 - root - ERROR - Email credentials contain placeholder values. Please configure with actual credentials.
+2025-07-14 13:33:12,422 - root - ERROR - For Thomson Reuters: Replace 'your-password-here' with your actual password or app password.
+2025-07-14 13:33:12,427 - root - INFO - Alert logged with ID: 8
+2025-07-14 13:33:12,431 - root - INFO - Processing run logged with ID: 4
+2025-07-14 13:33:12,431 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:33:12] "POST /send_alerts/20250714_133304_page-exp.xlsx HTTP/1.1" 200 -
+2025-07-14 13:33:34,927 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:33:34] "GET / HTTP/1.1" 200 -
+2025-07-14 13:33:40,014 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:33:40] "GET /upload HTTP/1.1" 200 -
+2025-07-14 13:34:32,653 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:34:32] "GET / HTTP/1.1" 200 -
+2025-07-14 13:34:59,731 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:34:59] "GET /upload HTTP/1.1" 200 -
+2025-07-14 13:35:01,444 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:35:01] "GET /configuration HTTP/1.1" 200 -
+2025-07-14 13:35:55,649 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:35:55] "GET / HTTP/1.1" 200 -
+2025-07-14 13:37:33,201 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:37:33] "GET /upload HTTP/1.1" 200 -
+2025-07-14 13:37:54,391 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:37:54] "GET / HTTP/1.1" 200 -
+2025-07-14 13:37:56,309 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:37:56] "GET /upload HTTP/1.1" 200 -
+2025-07-14 13:38:07,834 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:38:07] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2025-07-14 13:38:07,844 - root - INFO - Successfully read Excel file: uploads\20250714_133807_page-exp.xlsx
+2025-07-14 13:38:07,848 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-14 13:38:07,849 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-14 13:38:07,854 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-14 13:38:07,855 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:38:07] "GET /process/20250714_133807_page-exp.xlsx HTTP/1.1" 200 -
+2025-07-14 13:38:40,786 - root - INFO - Successfully read Excel file: uploads\20250714_133807_page-exp.xlsx
+2025-07-14 13:38:40,790 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-14 13:38:40,790 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-14 13:38:40,793 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-14 13:38:40,793 - root - ERROR - Email credentials contain placeholder values. Please configure with actual credentials.
+2025-07-14 13:38:40,794 - root - ERROR - For Thomson Reuters: Replace 'your-password-here' with your actual password or app password.
+2025-07-14 13:38:40,798 - root - INFO - Alert logged with ID: 9
+2025-07-14 13:38:40,798 - root - ERROR - Email credentials contain placeholder values. Please configure with actual credentials.
+2025-07-14 13:38:40,799 - root - ERROR - For Thomson Reuters: Replace 'your-password-here' with your actual password or app password.
+2025-07-14 13:38:40,803 - root - INFO - Alert logged with ID: 10
+2025-07-14 13:38:40,806 - root - INFO - Processing run logged with ID: 5
+2025-07-14 13:38:40,807 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:38:40] "POST /send_alerts/20250714_133807_page-exp.xlsx HTTP/1.1" 200 -
+2025-07-14 13:39:01,301 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:39:01] "GET / HTTP/1.1" 200 -
+2025-07-14 13:39:03,160 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:39:03] "GET /configuration HTTP/1.1" 200 -
+2025-07-14 13:40:01,156 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:40:01] "GET /upload HTTP/1.1" 200 -
+2025-07-14 13:40:26,320 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:40:26] "GET /configuration HTTP/1.1" 200 -
+2025-07-14 13:41:02,130 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:41:02] "GET / HTTP/1.1" 200 -
+2025-07-14 13:41:11,200 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:41:11] "GET /upload HTTP/1.1" 200 -
+2025-07-14 13:41:25,876 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:41:25] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2025-07-14 13:41:25,886 - root - INFO - Successfully read Excel file: uploads\20250714_134125_page-exp.xlsx
+2025-07-14 13:41:25,890 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-14 13:41:25,890 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-14 13:41:25,895 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-14 13:41:25,896 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:41:25] "GET /process/20250714_134125_page-exp.xlsx HTTP/1.1" 200 -
+2025-07-14 13:41:51,634 - root - INFO - Successfully read Excel file: uploads\20250714_134125_page-exp.xlsx
+2025-07-14 13:41:51,639 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-14 13:41:51,639 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-14 13:41:51,643 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-14 13:41:51,644 - root - ERROR - Email credentials contain placeholder values. Please configure with actual credentials.
+2025-07-14 13:41:51,644 - root - ERROR - For Thomson Reuters: Replace 'your-password-here' with your actual password or app password.
+2025-07-14 13:41:51,648 - root - INFO - Alert logged with ID: 11
+2025-07-14 13:41:51,649 - root - ERROR - Email credentials contain placeholder values. Please configure with actual credentials.
+2025-07-14 13:41:51,649 - root - ERROR - For Thomson Reuters: Replace 'your-password-here' with your actual password or app password.
+2025-07-14 13:41:51,652 - root - INFO - Alert logged with ID: 12
+2025-07-14 13:41:51,654 - root - INFO - Processing run logged with ID: 6
+2025-07-14 13:41:51,656 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:41:51] "POST /send_alerts/20250714_134125_page-exp.xlsx HTTP/1.1" 200 -
+2025-07-14 13:43:24,924 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:43:24] "GET / HTTP/1.1" 200 -
+2025-07-14 13:45:33,630 - root - ERROR - Email credentials contain placeholder values. Please configure with actual credentials.
+2025-07-14 13:45:33,630 - root - ERROR - For Thomson Reuters: Replace 'your-password-here' with your actual password or app password.
+2025-07-14 13:45:33,630 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 13:45:33] "POST /test_email HTTP/1.1" 200 -
+2025-07-14 16:41:34,697 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 16:41:34] "GET /upload HTTP/1.1" 200 -
+2025-07-14 16:41:47,339 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 16:41:47] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2025-07-14 16:41:47,444 - root - INFO - Successfully read Excel file: uploads\20250714_164147_page-exp.xlsx
+2025-07-14 16:41:47,464 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-14 16:41:47,465 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-14 16:41:47,490 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-14 16:41:47,493 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 16:41:47] "GET /process/20250714_164147_page-exp.xlsx HTTP/1.1" 200 -
+2025-07-14 16:42:18,891 - root - INFO - Successfully read Excel file: uploads\20250714_164147_page-exp.xlsx
+2025-07-14 16:42:18,903 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-14 16:42:18,904 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-14 16:42:18,916 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-14 16:42:18,922 - root - ERROR - Email credentials contain placeholder values. Please configure with actual credentials.
+2025-07-14 16:42:18,923 - root - ERROR - For Thomson Reuters: Replace 'your-password-here' with your actual password or app password.
+2025-07-14 16:42:18,938 - root - INFO - Alert logged with ID: 13
+2025-07-14 16:42:18,942 - root - ERROR - Email credentials contain placeholder values. Please configure with actual credentials.
+2025-07-14 16:42:18,942 - root - ERROR - For Thomson Reuters: Replace 'your-password-here' with your actual password or app password.
+2025-07-14 16:42:18,954 - root - INFO - Alert logged with ID: 14
+2025-07-14 16:42:18,968 - root - INFO - Processing run logged with ID: 7
+2025-07-14 16:42:18,969 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 16:42:18] "POST /send_alerts/20250714_164147_page-exp.xlsx HTTP/1.1" 200 -
+2025-07-14 16:45:15,353 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 16:45:15] "GET / HTTP/1.1" 200 -
+2025-07-14 16:46:15,573 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 16:46:15] "GET /configuration HTTP/1.1" 200 -
+2025-07-14 19:10:26,989 - apscheduler.executors.default - WARNING - Run time of job "Database Cleanup (trigger: cron[day_of_week='0', hour='2', minute='0'], next run at: 2025-07-14 02:00:00 IST)" was missed by 17:10:26.986830
+2025-07-14 19:10:27,171 - apscheduler.executors.default - WARNING - Run time of job "Database Cleanup (trigger: cron[day_of_week='0', hour='2', minute='0'], next run at: 2025-07-14 02:00:00 IST)" was missed by 17:10:27.170427
+2025-07-15 14:12:38,089 - root - INFO - Database initialized successfully
+2025-07-15 14:12:38,104 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-15 14:12:38,104 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-15 14:12:38,120 - apscheduler.scheduler - INFO - Added job "Page Analytics Processing" to job store "default"
+2025-07-15 14:12:38,120 - apscheduler.scheduler - INFO - Added job "Database Cleanup" to job store "default"
+2025-07-15 14:12:38,120 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-15 14:12:38,120 - root - INFO - Scheduler started with cron schedule: 0 9 * * 1
+2025-07-15 14:12:38,152 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.189.210.30:5000
+2025-07-15 14:12:38,152 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-15 14:12:38,152 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 14:12:39,057 - root - INFO - Database initialized successfully
+2025-07-15 14:12:39,073 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-15 14:12:39,073 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-15 14:12:39,075 - apscheduler.scheduler - INFO - Added job "Page Analytics Processing" to job store "default"
+2025-07-15 14:12:39,075 - apscheduler.scheduler - INFO - Added job "Database Cleanup" to job store "default"
+2025-07-15 14:12:39,075 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-15 14:12:39,075 - root - INFO - Scheduler started with cron schedule: 0 9 * * 1
+2025-07-15 14:12:39,084 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 14:12:39,090 - werkzeug - INFO -  * Debugger PIN: 120-148-571
+2025-07-15 14:13:01,719 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 14:13:01] "GET / HTTP/1.1" 200 -
+2025-07-15 14:13:04,100 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 14:13:04] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-15 14:13:27,912 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 14:13:27] "GET /upload HTTP/1.1" 200 -
+2025-07-15 14:13:58,055 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 14:13:58] "GET /configuration HTTP/1.1" 200 -
+2025-07-15 14:16:46,771 - root - INFO - Database initialized successfully
+2025-07-15 14:16:46,789 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-15 14:16:46,789 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-15 14:16:46,789 - apscheduler.scheduler - INFO - Added job "Page Analytics Processing" to job store "default"
+2025-07-15 14:16:46,789 - apscheduler.scheduler - INFO - Added job "Database Cleanup" to job store "default"
+2025-07-15 14:16:46,789 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-15 14:16:46,794 - root - INFO - Scheduler started with cron schedule: 0 9 * * 1
+2025-07-15 14:16:46,808 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.189.210.30:5000
+2025-07-15 14:16:46,808 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-15 14:16:46,819 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 14:16:47,775 - root - INFO - Database initialized successfully
+2025-07-15 14:16:47,787 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-15 14:16:47,787 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-15 14:16:47,793 - apscheduler.scheduler - INFO - Added job "Page Analytics Processing" to job store "default"
+2025-07-15 14:16:47,793 - apscheduler.scheduler - INFO - Added job "Database Cleanup" to job store "default"
+2025-07-15 14:16:47,794 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-15 14:16:47,795 - root - INFO - Scheduler started with cron schedule: 0 9 * * 1
+2025-07-15 14:16:47,803 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 14:16:47,806 - werkzeug - INFO -  * Debugger PIN: 120-148-571
+2025-07-15 14:17:32,645 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 14:17:32] "GET / HTTP/1.1" 200 -
+2025-07-15 14:17:34,899 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 14:17:34] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-15 14:19:10,524 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 14:19:10] "GET / HTTP/1.1" 200 -
+2025-07-15 14:23:46,736 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 14:23:46] "GET /configuration HTTP/1.1" 200 -
+2025-07-15 14:24:06,977 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 14:24:06] "GET / HTTP/1.1" 200 -
+2025-07-15 14:24:59,177 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 14:24:59] "GET /upload HTTP/1.1" 200 -
+2025-07-15 14:25:14,481 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 14:25:14] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2025-07-15 14:25:14,569 - root - INFO - Successfully read Excel file: uploads\20250715_142514_page-exp.xlsx
+2025-07-15 14:25:14,592 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-15 14:25:14,593 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-15 14:25:14,615 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-15 14:25:14,618 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 14:25:14] "GET /process/20250715_142514_page-exp.xlsx HTTP/1.1" 200 -
+2025-07-15 14:25:34,797 - root - INFO - Successfully read Excel file: uploads\20250715_142514_page-exp.xlsx
+2025-07-15 14:25:34,806 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-15 14:25:34,807 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-15 14:25:34,815 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-15 14:25:34,830 - root - ERROR - Email credentials contain placeholder values. Please configure with actual credentials.
+2025-07-15 14:25:34,830 - root - ERROR - For Thomson Reuters: Replace 'your-password-here' with your actual password or app password.
+2025-07-15 14:25:34,840 - root - INFO - Alert logged with ID: 15
+2025-07-15 14:25:34,842 - root - ERROR - Email credentials contain placeholder values. Please configure with actual credentials.
+2025-07-15 14:25:34,843 - root - ERROR - For Thomson Reuters: Replace 'your-password-here' with your actual password or app password.
+2025-07-15 14:25:34,852 - root - INFO - Alert logged with ID: 16
+2025-07-15 14:25:34,861 - root - INFO - Processing run logged with ID: 8
+2025-07-15 14:25:34,862 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 14:25:34] "POST /send_alerts/20250715_142514_page-exp.xlsx HTTP/1.1" 200 -
+2025-07-15 14:41:01,016 - apscheduler.executors.default - WARNING - Run time of job "Page Analytics Processing (trigger: cron[month='*', day='*', day_of_week='1', hour='9', minute='0'], next run at: 2025-07-15 09:00:00 UTC)" was missed by 0:11:01.016857
+2025-07-15 14:41:01,016 - apscheduler.executors.default - WARNING - Run time of job "Page Analytics Processing (trigger: cron[month='*', day='*', day_of_week='1', hour='9', minute='0'], next run at: 2025-07-15 09:00:00 UTC)" was missed by 0:11:01.016857
+2025-07-15 14:41:01,048 - apscheduler.executors.default - WARNING - Run time of job "Page Analytics Processing (trigger: cron[month='*', day='*', day_of_week='1', hour='9', minute='0'], next run at: 2025-07-15 09:00:00 UTC)" was missed by 0:11:01.048585
+2025-07-15 14:41:01,048 - apscheduler.executors.default - WARNING - Run time of job "Page Analytics Processing (trigger: cron[month='*', day='*', day_of_week='1', hour='9', minute='0'], next run at: 2025-07-15 09:00:00 UTC)" was missed by 0:11:01.048585
+2025-07-15 18:33:03,276 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 18:33:03] "GET / HTTP/1.1" 200 -
+2025-07-15 21:18:34,383 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 21:18:34] "GET / HTTP/1.1" 200 -
+2025-07-16 22:20:12,236 - root - INFO - Database initialized successfully
+2025-07-16 22:20:12,257 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-16 22:20:12,257 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-16 22:20:12,257 - apscheduler.scheduler - INFO - Added job "Page Analytics Processing" to job store "default"
+2025-07-16 22:20:12,257 - apscheduler.scheduler - INFO - Added job "Database Cleanup" to job store "default"
+2025-07-16 22:20:12,257 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-16 22:20:12,257 - root - INFO - Scheduler started with cron schedule: 0 9 * * 1
+2025-07-16 22:20:12,291 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.7:5000
+2025-07-16 22:20:12,291 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-16 22:20:12,292 - werkzeug - INFO -  * Restarting with stat
+2025-07-16 22:20:12,885 - root - INFO - Database initialized successfully
+2025-07-16 22:20:12,914 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-16 22:20:12,916 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-16 22:20:12,922 - apscheduler.scheduler - INFO - Added job "Page Analytics Processing" to job store "default"
+2025-07-16 22:20:12,922 - apscheduler.scheduler - INFO - Added job "Database Cleanup" to job store "default"
+2025-07-16 22:20:12,924 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-16 22:20:12,927 - root - INFO - Scheduler started with cron schedule: 0 9 * * 1
+2025-07-16 22:20:12,937 - werkzeug - WARNING -  * Debugger is active!
+2025-07-16 22:20:12,940 - werkzeug - INFO -  * Debugger PIN: 120-148-571
+2025-07-16 22:29:26,692 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:29:26] "GET / HTTP/1.1" 200 -
+2025-07-16 22:29:27,023 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:29:27] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-16 22:29:55,521 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:29:55] "GET /upload HTTP/1.1" 200 -
+2025-07-16 22:30:32,563 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:30:32] "GET /configuration HTTP/1.1" 200 -
+2025-07-16 22:32:31,446 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:32:31] "GET / HTTP/1.1" 200 -
+2025-07-16 22:38:11,240 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:38:11] "GET / HTTP/1.1" 200 -
+2025-07-16 22:38:11,954 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:38:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-16 22:38:15,180 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:38:15] "GET /upload HTTP/1.1" 200 -
+2025-07-16 22:38:16,625 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:38:16] "GET /configuration HTTP/1.1" 200 -
+2025-07-16 22:38:18,539 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:38:18] "GET / HTTP/1.1" 200 -
+2025-07-16 22:38:42,546 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:38:42] "GET /upload HTTP/1.1" 200 -
+2025-07-16 22:38:44,159 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:38:44] "GET /configuration HTTP/1.1" 200 -
+2025-07-16 22:38:46,188 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:38:46] "GET / HTTP/1.1" 200 -
+2025-07-16 22:38:51,111 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:38:51] "GET /upload HTTP/1.1" 200 -
+2025-07-16 22:39:08,580 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:39:08] "GET / HTTP/1.1" 200 -
+2025-07-16 22:39:09,607 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:39:09] "GET /upload HTTP/1.1" 200 -
+2025-07-16 22:39:10,329 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:39:10] "GET /configuration HTTP/1.1" 200 -
+2025-07-16 22:42:11,675 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:42:11] "GET / HTTP/1.1" 200 -
+2025-07-16 22:44:26,918 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 22:44:26] "GET /upload HTTP/1.1" 200 -
+2025-07-16 23:29:46,203 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 23:29:46] "GET / HTTP/1.1" 200 -
+2025-07-16 23:29:49,993 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-07-16 23:29:49,997 - root - INFO - Scheduler stopped successfully
+2025-07-16 23:29:49,999 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 23:29:49] "POST /scheduler/stop HTTP/1.1" 200 -
+2025-07-16 23:29:50,016 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 23:29:50] "GET / HTTP/1.1" 200 -
+2025-07-16 23:29:54,289 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-16 23:29:54,291 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-16 23:29:54,295 - apscheduler.scheduler - INFO - Added job "Page Analytics Processing" to job store "default"
+2025-07-16 23:29:54,296 - apscheduler.scheduler - INFO - Added job "Database Cleanup" to job store "default"
+2025-07-16 23:29:54,296 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-16 23:29:54,298 - root - INFO - Scheduler started with cron schedule: 0 9 * * 1
+2025-07-16 23:29:54,298 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 23:29:54] "POST /scheduler/start HTTP/1.1" 200 -
+2025-07-16 23:29:54,616 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 23:29:54] "GET / HTTP/1.1" 200 -
+2025-07-16 23:30:03,101 - root - INFO - Triggering manual processing run
+2025-07-16 23:30:03,101 - root - INFO - Starting scheduled analytics processing
+2025-07-16 23:30:03,130 - root - INFO - Database initialized successfully
+2025-07-16 23:30:03,794 - root - INFO - Successfully read Excel file: uploads\20250715_142514_page-exp.xlsx
+2025-07-16 23:30:03,823 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-16 23:30:03,824 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-16 23:30:03,827 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-16 23:30:03,830 - root - ERROR - Email credentials contain placeholder values. Please configure with actual credentials.
+2025-07-16 23:30:03,831 - root - ERROR - For Thomson Reuters: Replace 'your-password-here' with your actual password or app password.
+2025-07-16 23:30:03,839 - root - INFO - Alert logged with ID: 17
+2025-07-16 23:30:03,844 - root - ERROR - Email credentials contain placeholder values. Please configure with actual credentials.
+2025-07-16 23:30:03,844 - root - ERROR - For Thomson Reuters: Replace 'your-password-here' with your actual password or app password.
+2025-07-16 23:30:03,849 - root - INFO - Alert logged with ID: 18
+2025-07-16 23:30:03,855 - root - INFO - Processing run logged with ID: 9
+2025-07-16 23:30:03,855 - root - INFO - Processing complete: 2 pages, 2 alerts, 0 emails sent
+2025-07-16 23:30:03,855 - root - INFO - Scheduled processing completed successfully for 20250715_142514_page-exp.xlsx
+2025-07-16 23:30:03,856 - werkzeug - INFO - 127.0.0.1 - - [16/Jul/2025 23:30:03] "POST /scheduler/trigger HTTP/1.1" 200 -
+2025-07-17 12:52:18,145 - werkzeug - INFO - 127.0.0.1 - - [17/Jul/2025 12:52:18] "GET /upload HTTP/1.1" 200 -
+2025-07-17 12:52:19,002 - werkzeug - INFO - 127.0.0.1 - - [17/Jul/2025 12:52:19] "GET /configuration HTTP/1.1" 200 -
+2025-07-17 12:52:32,402 - werkzeug - INFO - 127.0.0.1 - - [17/Jul/2025 12:52:32] "GET /static/sample_stakeholders.yaml HTTP/1.1" 200 -
+2025-07-17 12:52:40,697 - werkzeug - INFO - 127.0.0.1 - - [17/Jul/2025 12:52:40] "GET /api/validate-stakeholders HTTP/1.1" 200 -
+2025-07-17 12:52:45,160 - werkzeug - INFO - 127.0.0.1 - - [17/Jul/2025 12:52:45] "GET /configuration HTTP/1.1" 200 -
+2025-07-17 19:38:10,098 - werkzeug - INFO - 127.0.0.1 - - [17/Jul/2025 19:38:10] "GET / HTTP/1.1" 200 -
+2025-07-17 20:08:09,602 - werkzeug - INFO - 127.0.0.1 - - [17/Jul/2025 20:08:09] "GET /upload HTTP/1.1" 200 -
+2025-07-17 20:08:11,362 - werkzeug - INFO - 127.0.0.1 - - [17/Jul/2025 20:08:11] "GET /configuration HTTP/1.1" 200 -
+2025-07-17 20:08:30,179 - werkzeug - INFO - 127.0.0.1 - - [17/Jul/2025 20:08:30] "GET /upload HTTP/1.1" 200 -
+2025-07-17 20:08:32,593 - werkzeug - INFO - 127.0.0.1 - - [17/Jul/2025 20:08:32] "GET /configuration HTTP/1.1" 200 -
+2025-07-17 20:09:35,399 - werkzeug - INFO - 127.0.0.1 - - [17/Jul/2025 20:09:35] "GET / HTTP/1.1" 200 -
+2025-07-17 20:09:38,289 - werkzeug - INFO - 127.0.0.1 - - [17/Jul/2025 20:09:38] "GET /upload HTTP/1.1" 200 -
+2025-07-17 20:09:46,055 - werkzeug - INFO - 127.0.0.1 - - [17/Jul/2025 20:09:46] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2025-07-17 20:09:46,084 - root - INFO - Successfully read Excel file: uploads\20250717_200946_page-exp.xlsx
+2025-07-17 20:09:46,090 - root - INFO - Data cleaned: 3 -> 2 rows
+2025-07-17 20:09:46,090 - root - INFO - Excel file processed successfully. Found 2 rows
+2025-07-17 20:09:46,105 - root - INFO - Analysis complete: 2 expired pages, 0 low engagement pages
+2025-07-17 20:09:46,119 - werkzeug - INFO - 127.0.0.1 - - [17/Jul/2025 20:09:46] "GET /process/20250717_200946_page-exp.xlsx HTTP/1.1" 200 -

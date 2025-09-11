@@ -1,0 +1,226 @@
+{% extends "base.html" %} {% block title %}Upload Report - Page Analytics
+Notification System{% endblock %} {% block header %}Upload Analytics Report{%
+endblock %} {% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">
+          <i class="fas fa-upload"></i>
+          Upload Adobe Analytics Report
+        </h5>
+      </div>
+      <div class="card-body">
+        <form method="POST" enctype="multipart/form-data" id="uploadForm">
+          <div class="mb-4">
+            <label for="file" class="form-label">Select Excel File</label>
+            <input
+              type="file"
+              class="form-control"
+              id="file"
+              name="file"
+              accept=".xlsx,.xls"
+              required
+            />
+            <div class="form-text">
+              Upload an Excel file (.xlsx or .xls) containing page analytics
+              data with the following columns:
+              <strong>Page URL</strong>, <strong>Creation Date</strong>, and
+              <strong>Page Views</strong>.
+            </div>
+          </div>
+
+          <div class="alert alert-info">
+            <h6><i class="fas fa-info-circle"></i> File Requirements:</h6>
+            <ul class="mb-0">
+              <li>Maximum file size: 50MB</li>
+              <li>Supported formats: .xlsx, .xls</li>
+              <li>Required columns: Page URL, Creation Date, Page Views</li>
+              <li>
+                Column names can be case-insensitive and may contain variations
+              </li>
+            </ul>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">
+              <i class="fas fa-upload"></i>
+              Upload and Process
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Sample Data Format -->
+    <div class="card mt-4">
+      <div class="card-header">
+        <h6 class="mb-0">
+          <i class="fas fa-table"></i>
+          Expected Data Format
+        </h6>
+      </div>
+      <div class="card-body">
+        <p>Your Excel file should contain data in the following format:</p>
+        <div class="table-responsive">
+          <table class="table table-bordered table-sm">
+            <thead class="table-light">
+              <tr>
+                <th>Page URL</th>
+                <th>Creation Date</th>
+                <th>Page Views</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>/about-us/</td>
+                <td>2022-01-15</td>
+                <td>1250</td>
+              </tr>
+              <tr>
+                <td>/products/laptop/</td>
+                <td>2023-06-20</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>/blog/new-features/</td>
+                <td>2024-12-01</td>
+                <td>45</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <small class="text-muted">
+          <strong>Note:</strong> The system will automatically detect similar
+          column names and map them appropriately.
+        </small>
+      </div>
+    </div>
+
+    <!-- Processing Information -->
+    <div class="card mt-4">
+      <div class="card-header">
+        <h6 class="mb-0">
+          <i class="fas fa-cogs"></i>
+          What Happens Next?
+        </h6>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h6 class="text-danger">
+              <i class="fas fa-exclamation-triangle"></i>
+              Expired Page Detection
+            </h6>
+            <p class="small">
+              Pages older than 2 years (configurable) will be flagged for review
+              or removal.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <h6 class="text-warning">
+              <i class="fas fa-chart-line"></i>
+              Low Engagement Detection
+            </h6>
+            <p class="small">
+              Recently created pages (within 30 days) with fewer than 5 page
+              views will be flagged for optimization.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <h6 class="text-primary">
+              <i class="fas fa-users"></i>
+              Stakeholder Mapping
+            </h6>
+            <p class="small">
+              Each page will be mapped to responsible stakeholders based on URL
+              patterns and configuration.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <h6 class="text-success">
+              <i class="fas fa-envelope"></i>
+              Email Notifications
+            </h6>
+            <p class="small">
+              Personalized email alerts will be sent to stakeholders with
+              actionable recommendations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Upload Progress Modal -->
+<div
+  class="modal fade"
+  id="uploadProgressModal"
+  tabindex="-1"
+  data-bs-backdrop="static"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <i class="fas fa-spinner fa-spin"></i>
+          Processing File
+        </h5>
+      </div>
+      <div class="modal-body text-center">
+        <div class="progress mb-3">
+          <div
+            class="progress-bar progress-bar-striped progress-bar-animated"
+            role="progressbar"
+            style="width: 100%"
+          ></div>
+        </div>
+        <p>Please wait while we process your file...</p>
+        <small class="text-muted"
+          >This may take a few moments depending on file size.</small
+        >
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block scripts %}
+<script>
+  document
+    .getElementById("uploadForm")
+    .addEventListener("submit", function (e) {
+      // Show progress modal
+      $("#uploadProgressModal").modal("show");
+    });
+
+  // File size validation
+  document.getElementById("file").addEventListener("change", function (e) {
+    const file = e.target.files[0];
+    if (file) {
+      const maxSize = 50 * 1024 * 1024; // 50MB
+      if (file.size > maxSize) {
+        alert("File is too large. Maximum size is 50MB.");
+        e.target.value = "";
+        return;
+      }
+
+      // Check file extension
+      const allowedExtensions = [".xlsx", ".xls"];
+      const fileName = file.name.toLowerCase();
+      const isValidExtension = allowedExtensions.some((ext) =>
+        fileName.endsWith(ext)
+      );
+
+      if (!isValidExtension) {
+        alert(
+          "Invalid file type. Please select an Excel file (.xlsx or .xls)."
+        );
+        e.target.value = "";
+        return;
+      }
+    }
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Page Review Required - Expired Content</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .header {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      .alert {
+        background-color: #fff3cd;
+        border: 1px solid #ffeaa7;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      .page-info {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 20px 0;
+      }
+      .action-buttons {
+        margin: 20px 0;
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+      .btn-primary {
+        background-color: #007bff;
+        color: white;
+      }
+      .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+      }
+      .footer {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #dee2e6;
+        font-size: 12px;
+        color: #6c757d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>🚨 Page Review Required - Expired Content</h2>
+        <p>This is an automated notification from the Page Analytics System.</p>
+      </div>
+
+      <div class="alert">
+        <strong>Action Required:</strong> The following page has exceeded the
+        age threshold and requires review for potential update or removal.
+      </div>
+
+      <div class="page-info">
+        <h3>Page Details:</h3>
+        <p>
+          <strong>URL:</strong>
+          <a href="{{page_url}}" target="_blank">{{page_url}}</a>
+        </p>
+        <p><strong>Creation Date:</strong> {{creation_date}}</p>
+        <p>
+          <strong>Page Age:</strong> {{page_age_days}} days ({{page_age_years}}
+          years)
+        </p>
+        <p><strong>Total Page Views:</strong> {{page_views}}</p>
+        <p><strong>Alert Generated:</strong> {{alert_date}}</p>
+      </div>
+
+      <h3>Recommended Actions:</h3>
+      <ul>
+        <li>
+          <strong>Review Content:</strong> Check if the information is still
+          accurate and relevant
+        </li>
+        <li>
+          <strong>Update Page:</strong> Refresh content with current information
+          if still needed
+        </li>
+        <li>
+          <strong>Archive/Remove:</strong> Consider removing if no longer
+          relevant
+        </li>
+        <li>
+          <strong>Redirect:</strong> Set up redirects if content has moved
+          elsewhere
+        </li>
+      </ul>
+
+      <div class="action-buttons">
+        <a href="{{aem_edit_url}}" class="btn btn-primary" target="_blank"
+          >Edit in AEM</a
+        >
+        <a href="{{analytics_url}}" class="btn btn-secondary" target="_blank"
+          >View Analytics</a
+        >
+      </div>
+
+      <div class="footer">
+        <p>
+          This alert was generated automatically based on page age threshold of
+          {{threshold_days}} days.
+        </p>
+        <p>
+          If you believe this alert was sent in error, please contact the system
+          administrator.
+        </p>
+        <p><em>Page Analytics Notification System - {{company_name}}</em></p>
+      </div>
+    </div>
+  </body>
+</html>

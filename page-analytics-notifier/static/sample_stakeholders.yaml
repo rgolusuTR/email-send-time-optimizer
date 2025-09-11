@@ -1,0 +1,38 @@
+# Sample Stakeholder Mapping Configuration
+# Copy this file to config/stakeholders.yaml and customize for your organization
+
+stakeholders:
+  # Exact URL matches - for specific pages
+  exact_matches:
+    "/about-us/": "marketing@company.com"
+    "/contact/": "marketing@company.com"
+    "/careers/": "hr@company.com"
+    "/privacy-policy/": "legal@company.com"
+    "/terms-of-service/": "legal@company.com"
+    "/investor-relations/": "investor-relations@company.com"
+
+  # Pattern matches - for URL patterns using wildcards
+  pattern_matches:
+    "*/products/*": "product-team@company.com"
+    "*/blog/*": "content-team@company.com"
+    "*/news/*": "marketing@company.com"
+    "*/support/*": "support@company.com"
+    "*/docs/*": "technical-writing@company.com"
+    "*/api/*": "engineering@company.com"
+
+  # Department fallbacks - when no specific match is found
+  department_fallbacks:
+    marketing: "marketing@company.com"
+    product: "product-team@company.com"
+    engineering: "engineering@company.com"
+    support: "support@company.com"
+    content: "content-team@company.com"
+    legal: "legal@company.com"
+    hr: "hr@company.com"
+    default: "webmaster@company.com"
+# Configuration Notes:
+# 1. Exact matches take priority over pattern matches
+# 2. Pattern matches use simple wildcard matching (*)
+# 3. Department fallbacks are used when no URL match is found
+# 4. The 'default' fallback is used when no department can be determined
+# 5. All email addresses should be valid and monitored

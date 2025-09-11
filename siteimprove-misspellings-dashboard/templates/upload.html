@@ -1,0 +1,443 @@
+{% extends "base.html" %} {% block title %}Upload Reports - Siteimprove{%
+endblock %} {% block content %}
+<div
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+>
+  <h1 class="h2">
+    <i class="fas fa-upload me-2"></i>Upload Siteimprove Reports
+  </h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group me-2">
+      <a href="{{ url_for('index') }}" class="btn btn-sm btn-outline-secondary">
+        <i class="fas fa-arrow-left me-1"></i>Back to Dashboard
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Upload Form -->
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">
+          <i class="fas fa-file-upload me-2"></i>Upload Report File
+        </h5>
+      </div>
+      <div class="card-body">
+        <form id="uploadForm" enctype="multipart/form-data">
+          <!-- Website Selection -->
+          <div class="mb-3">
+            <label for="websiteSelect" class="form-label">
+              <i class="fas fa-globe me-1"></i>Website
+              <span class="text-danger">*</span>
+            </label>
+            <select
+              class="form-select"
+              id="websiteSelect"
+              name="website_id"
+              required
+            >
+              <option value="">Select a website...</option>
+              {% for website in websites %}
+              <option value="{{ website.id }}">{{ website.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <!-- Report Type Selection -->
+          <div class="mb-3">
+            <label for="reportTypeSelect" class="form-label">
+              <i class="fas fa-file-alt me-1"></i>Report Type
+            </label>
+            <select
+              class="form-select"
+              id="reportTypeSelect"
+              name="report_type"
+            >
+              <option value="auto">Auto-detect from file content</option>
+              <option value="misspellings">Misspellings Report</option>
+              <option value="words_to_review">Words to Review Report</option>
+              <option value="pages_with_misspellings">
+                Pages with Misspellings Report
+              </option>
+              <option value="misspelling_history">
+                Misspelling History Report
+              </option>
+            </select>
+            <div class="form-text">
+              Leave as "Auto-detect" to automatically determine the report type
+              based on file content.
+            </div>
+          </div>
+
+          <!-- File Upload -->
+          <div class="mb-3">
+            <label for="fileInput" class="form-label">
+              <i class="fas fa-file me-1"></i>Report File
+              <span class="text-danger">*</span>
+            </label>
+            <input
+              type="file"
+              class="form-control"
+              id="fileInput"
+              name="file"
+              accept=".csv,.xlsx,.xls"
+              required
+            />
+            <div class="form-text">
+              Supported formats: CSV, Excel (.xlsx, .xls). Maximum file size:
+              16MB.
+            </div>
+          </div>
+
+          <!-- Drag and Drop Area -->
+          <div class="mb-3">
+            <div
+              id="dropZone"
+              class="border border-2 border-dashed rounded p-4 text-center"
+            >
+              <i class="fas fa-cloud-upload-alt fa-3x text-muted mb-3"></i>
+              <p class="mb-2">
+                Drag and drop your file here, or click to browse
+              </p>
+              <p class="text-muted small">CSV, Excel files up to 16MB</p>
+            </div>
+          </div>
+
+          <!-- Upload Button -->
+          <div class="d-grid">
+            <button
+              type="submit"
+              class="btn btn-primary btn-lg"
+              id="uploadButton"
+            >
+              <i class="fas fa-upload me-2"></i>Upload and Process
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Progress Section -->
+<div
+  class="row justify-content-center mt-4"
+  id="progressSection"
+  style="display: none"
+>
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">
+          <i class="fas fa-cog fa-spin me-2"></i>Processing File...
+        </h6>
+        <div class="progress mb-3">
+          <div
+            class="progress-bar progress-bar-striped progress-bar-animated"
+            role="progressbar"
+            style="width: 0%"
+            id="progressBar"
+          ></div>
+        </div>
+        <p class="text-muted mb-0" id="progressText">Uploading file...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Results Section -->
+<div
+  class="row justify-content-center mt-4"
+  id="resultsSection"
+  style="display: none"
+>
+  <div class="col-lg-8">
+    <div class="card" id="resultsCard">
+      <div class="card-body">
+        <div id="resultsContent">
+          <!-- Results will be displayed here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Help Section -->
+<div class="row justify-content-center mt-4">
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">
+          <i class="fas fa-question-circle me-2"></i>File Format Requirements
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h6>
+              <i class="fas fa-info-circle me-1 text-primary"></i>Supported
+              Report Types
+            </h6>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fas fa-check text-success me-1"></i>Misspellings
+                Report
+              </li>
+              <li>
+                <i class="fas fa-check text-success me-1"></i>Words to Review
+                Report
+              </li>
+              <li>
+                <i class="fas fa-check text-success me-1"></i>Pages with
+                Misspellings Report
+              </li>
+              <li>
+                <i class="fas fa-check text-success me-1"></i>Misspelling
+                History Report
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h6>
+              <i class="fas fa-file-alt me-1 text-primary"></i>File Format
+            </h6>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fas fa-check text-success me-1"></i>CSV files (.csv)
+              </li>
+              <li>
+                <i class="fas fa-check text-success me-1"></i>Excel files
+                (.xlsx, .xls)
+              </li>
+              <li>
+                <i class="fas fa-check text-success me-1"></i>Maximum size: 16MB
+              </li>
+              <li>
+                <i class="fas fa-check text-success me-1"></i>Data starts from
+                row 4
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="alert alert-info mt-3">
+          <i class="fas fa-lightbulb me-2"></i>
+          <strong>Tip:</strong> The system automatically skips the first 3 rows
+          (metadata) and processes data starting from row 4, which should
+          contain the column headers.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block extra_js %}
+<script>
+  $(document).ready(function () {
+    const dropZone = $("#dropZone");
+    const fileInput = $("#fileInput");
+    const uploadForm = $("#uploadForm");
+    const progressSection = $("#progressSection");
+    const resultsSection = $("#resultsSection");
+    const uploadButton = $("#uploadButton");
+
+    // Drag and drop functionality
+    dropZone.on("dragover", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).addClass("border-primary bg-light");
+    });
+
+    dropZone.on("dragleave", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).removeClass("border-primary bg-light");
+    });
+
+    dropZone.on("drop", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).removeClass("border-primary bg-light");
+
+      const files = e.originalEvent.dataTransfer.files;
+      if (files.length > 0) {
+        fileInput[0].files = files;
+        updateFileDisplay(files[0]);
+      }
+    });
+
+    dropZone.on("click", function () {
+      fileInput.click();
+    });
+
+    fileInput.on("change", function () {
+      if (this.files.length > 0) {
+        updateFileDisplay(this.files[0]);
+      }
+    });
+
+    function updateFileDisplay(file) {
+      const fileName = file.name;
+      const fileSize = (file.size / 1024 / 1024).toFixed(2);
+
+      dropZone.html(`
+            <i class="fas fa-file fa-3x text-success mb-3"></i>
+            <p class="mb-1"><strong>${fileName}</strong></p>
+            <p class="text-muted small">${fileSize} MB</p>
+            <p class="text-muted small">Click to change file</p>
+        `);
+    }
+
+    // Form submission
+    uploadForm.on("submit", function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+
+      // Validate form
+      if (!formData.get("website_id")) {
+        showAlert("Please select a website.", "danger");
+        return;
+      }
+
+      if (!formData.get("file") || formData.get("file").size === 0) {
+        showAlert("Please select a file to upload.", "danger");
+        return;
+      }
+
+      // Show progress
+      showProgress();
+
+      // Upload file
+      $.ajax({
+        url: "/api/upload",
+        type: "POST",
+        data: formData,
+        processData: false,
+        contentType: false,
+        xhr: function () {
+          const xhr = new window.XMLHttpRequest();
+          xhr.upload.addEventListener(
+            "progress",
+            function (e) {
+              if (e.lengthComputable) {
+                const percentComplete = (e.loaded / e.total) * 100;
+                updateProgress(percentComplete, "Uploading file...");
+              }
+            },
+            false
+          );
+          return xhr;
+        },
+        success: function (response) {
+          updateProgress(100, "Processing complete!");
+          setTimeout(() => {
+            showResults(response, "success");
+          }, 500);
+        },
+        error: function (xhr) {
+          const error = xhr.responseJSON
+            ? xhr.responseJSON.error
+            : "Upload failed";
+          showResults({ error: error }, "error");
+        },
+      });
+    });
+
+    function showProgress() {
+      progressSection.show();
+      resultsSection.hide();
+      uploadButton.prop("disabled", true);
+      updateProgress(0, "Uploading file...");
+    }
+
+    function updateProgress(percent, text) {
+      $("#progressBar").css("width", percent + "%");
+      $("#progressText").text(text);
+    }
+
+    function showResults(data, type) {
+      progressSection.hide();
+      uploadButton.prop("disabled", false);
+
+      let content = "";
+      let cardClass = "";
+
+      if (type === "success") {
+        cardClass = "border-success";
+        content = `
+                <div class="text-success mb-3">
+                    <i class="fas fa-check-circle fa-3x"></i>
+                </div>
+                <h5 class="text-success">Upload Successful!</h5>
+                <p class="mb-3">${data.message}</p>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <strong>Website</strong><br>
+                        <span class="text-muted">${data.website}</span>
+                    </div>
+                    <div class="col-md-4">
+                        <strong>Report Type</strong><br>
+                        <span class="text-muted">${data.report_type
+                          .replace("_", " ")
+                          .replace(/\b\w/g, (l) => l.toUpperCase())}</span>
+                    </div>
+                    <div class="col-md-4">
+                        <strong>Report ID</strong><br>
+                        <span class="text-muted">#${data.report_id}</span>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <a href="${window.location.origin}" class="btn btn-primary">
+                        <i class="fas fa-chart-line me-1"></i>View Dashboard
+                    </a>
+                    <button type="button" class="btn btn-outline-secondary ms-2" onclick="resetForm()">
+                        <i class="fas fa-plus me-1"></i>Upload Another File
+                    </button>
+                </div>
+            `;
+      } else {
+        cardClass = "border-danger";
+        content = `
+                <div class="text-danger mb-3">
+                    <i class="fas fa-exclamation-triangle fa-3x"></i>
+                </div>
+                <h5 class="text-danger">Upload Failed</h5>
+                <p class="mb-3">${data.error}</p>
+                <button type="button" class="btn btn-outline-secondary" onclick="resetForm()">
+                    <i class="fas fa-redo me-1"></i>Try Again
+                </button>
+            `;
+      }
+
+      $("#resultsCard").removeClass().addClass(`card ${cardClass}`);
+      $("#resultsContent").html(content);
+      resultsSection.show();
+    }
+
+    function showAlert(message, type) {
+      const alert = `
+            <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        `;
+      $(alert).insertBefore("#uploadForm");
+    }
+
+    // Reset form function
+    window.resetForm = function () {
+      uploadForm[0].reset();
+      dropZone.html(`
+            <i class="fas fa-cloud-upload-alt fa-3x text-muted mb-3"></i>
+            <p class="mb-2">Drag and drop your file here, or click to browse</p>
+            <p class="text-muted small">CSV, Excel files up to 16MB</p>
+        `);
+      progressSection.hide();
+      resultsSection.hide();
+      $(".alert").remove();
+    };
+  });
+</script>
+{% endblock %}
