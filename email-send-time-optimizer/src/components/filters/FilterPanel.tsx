@@ -6,7 +6,6 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  Grid,
   Button,
 } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
@@ -59,8 +58,18 @@ export function FilterPanel({
         Refine your analysis by filtering the data
       </Typography>
 
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={6} md={3}>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "repeat(2, 1fr)",
+            md: "repeat(4, 1fr)",
+          },
+          gap: 2,
+        }}
+      >
+        <Box>
           <FormControl fullWidth>
             <InputLabel>Business Unit</InputLabel>
             <Select
@@ -77,9 +86,9 @@ export function FilterPanel({
               ))}
             </Select>
           </FormControl>
-        </Grid>
+        </Box>
 
-        <Grid item xs={12} sm={6} md={3}>
+        <Box>
           <FormControl fullWidth>
             <InputLabel>Organization Type</InputLabel>
             <Select
@@ -96,9 +105,9 @@ export function FilterPanel({
               ))}
             </Select>
           </FormControl>
-        </Grid>
+        </Box>
 
-        <Grid item xs={12} sm={6} md={3}>
+        <Box>
           <FormControl fullWidth>
             <InputLabel>Campaign Type</InputLabel>
             <Select
@@ -115,10 +124,10 @@ export function FilterPanel({
               ))}
             </Select>
           </FormControl>
-        </Grid>
+        </Box>
 
         {settings.enableTimezone && (
-          <Grid item xs={12} sm={6} md={3}>
+          <Box>
             <FormControl fullWidth>
               <InputLabel>Timezone (Optional)</InputLabel>
               <Select
@@ -141,9 +150,9 @@ export function FilterPanel({
                 ))}
               </Select>
             </FormControl>
-          </Grid>
+          </Box>
         )}
-      </Grid>
+      </Box>
 
       {onAnalyze && (
         <Box sx={{ mt: 3, display: "flex", justifyContent: "center" }}>
