@@ -184,3 +184,4 @@ Proprietary - Thomson Reuters
   - Multiple export formats
   - Responsive design
   - Large file support
+  - GitHub Pages deployment
