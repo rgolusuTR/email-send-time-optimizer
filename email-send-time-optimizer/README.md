@@ -1,5 +1,7 @@
 # Email Send Time Optimizer
 
+[![Deploy to GitHub Pages](https://github.com/rgolusuTR/email-send-time-optimizer/actions/workflows/deploy.yml/badge.svg)](https://github.com/rgolusuTR/email-send-time-optimizer/actions/workflows/deploy.yml)
+
 A modern React application for analyzing email campaign data and determining optimal send times based on historical performance metrics.
 
 ## Features
