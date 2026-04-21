@@ -1,0 +1,339 @@
+{% extends "base.html" %} {% block title %}Processing Results - Page Analytics
+Notification System{% endblock %} {% block header %}Processing Results{%
+endblock %} {% block content %}
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div
+        class="card-header d-flex justify-content-between align-items-center"
+      >
+        <h5 class="mb-0">
+          <i class="fas fa-chart-bar"></i>
+          Analysis Results for {{ filename }}
+        </h5>
+        <button class="btn btn-success" onclick="sendAlerts()">
+          <i class="fas fa-paper-plane"></i>
+          Send Email Alerts
+        </button>
+      </div>
+      <div class="card-body">
+        <!-- Summary Statistics -->
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <h4 class="text-primary">
+                  {{ summary.get('total_pages', 0) }}
+                </h4>
+                <p class="mb-0">Total Pages</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <h4 class="text-danger">{{ expired_pages|length }}</h4>
+                <p class="mb-0">Expired Pages</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <h4 class="text-warning">{{ low_engagement_pages|length }}</h4>
+                <p class="mb-0">Low Engagement</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <h4 class="text-info">
+                  {{ summary.get('page_views', {}).get('total', 0) }}
+                </h4>
+                <p class="mb-0">Total Page Views</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Summary -->
+        {% if summary %}
+        <div class="alert alert-info">
+          <h6><i class="fas fa-info-circle"></i> Data Summary</h6>
+          <div class="row">
+            <div class="col-md-6">
+              <p>
+                <strong>Date Range:</strong> {{ summary.get('date_range',
+                {}).get('earliest', 'N/A') }} to {{ summary.get('date_range',
+                {}).get('latest', 'N/A') }}
+              </p>
+              <p>
+                <strong>Average Page Views:</strong> {{
+                summary.get('page_views', {}).get('average', 0) }}
+              </p>
+            </div>
+            <div class="col-md-6">
+              <p>
+                <strong>Average Page Age:</strong> {{
+                summary.get('age_distribution', {}).get('average_age_days', 0)
+                }} days
+              </p>
+              <p>
+                <strong>Pages Over 2 Years:</strong> {{
+                summary.get('age_distribution', {}).get('pages_over_2_years', 0)
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Expired Pages -->
+{% if expired_pages %}
+<div class="row mt-4">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0 text-danger">
+          <i class="fas fa-exclamation-triangle"></i>
+          Expired Pages ({{ expired_pages|length }})
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Page URL</th>
+                <th>Creation Date</th>
+                <th>Age (Years)</th>
+                <th>Page Views</th>
+                <th>Stakeholder</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for page in expired_pages %}
+              <tr>
+                <td>
+                  <a
+                    href="{{ page.page_url }}"
+                    target="_blank"
+                    class="text-decoration-none"
+                  >
+                    {{ page.page_url[:60] }}{% if page.page_url|length > 60
+                    %}...{% endif %}
+                  </a>
+                </td>
+                <td>{{ page.creation_date }}</td>
+                <td>
+                  <span class="badge bg-danger"
+                    >{{ page.page_age_years }} years</span
+                  >
+                </td>
+                <td>{{ page.page_views }}</td>
+                <td>
+                  <small class="text-muted"
+                    >Will be determined during email sending</small
+                  >
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- Low Engagement Pages -->
+{% if low_engagement_pages %}
+<div class="row mt-4">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0 text-warning">
+          <i class="fas fa-chart-line"></i>
+          Low Engagement Pages ({{ low_engagement_pages|length }})
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Page URL</th>
+                <th>Creation Date</th>
+                <th>Days Since Creation</th>
+                <th>Page Views</th>
+                <th>Expected Views</th>
+                <th>Stakeholder</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for page in low_engagement_pages %}
+              <tr>
+                <td>
+                  <a
+                    href="{{ page.page_url }}"
+                    target="_blank"
+                    class="text-decoration-none"
+                  >
+                    {{ page.page_url[:60] }}{% if page.page_url|length > 60
+                    %}...{% endif %}
+                  </a>
+                </td>
+                <td>{{ page.creation_date }}</td>
+                <td>
+                  <span class="badge bg-warning"
+                    >{{ page.days_since_creation }} days</span
+                  >
+                </td>
+                <td>{{ page.page_views }}</td>
+                <td>{{ page.expected_views }}</td>
+                <td>
+                  <small class="text-muted"
+                    >Will be determined during email sending</small
+                  >
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- No Issues Found -->
+{% if not expired_pages and not low_engagement_pages %}
+<div class="row mt-4">
+  <div class="col-12">
+    <div class="alert alert-success text-center">
+      <h4><i class="fas fa-check-circle"></i> No Issues Found!</h4>
+      <p class="mb-0">
+        All pages are performing well according to the current thresholds.
+      </p>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- Processing Modal -->
+<div
+  class="modal fade"
+  id="processingModal"
+  tabindex="-1"
+  data-bs-backdrop="static"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <i class="fas fa-spinner fa-spin"></i>
+          Sending Email Alerts
+        </h5>
+      </div>
+      <div class="modal-body text-center">
+        <div class="progress mb-3">
+          <div
+            class="progress-bar progress-bar-striped progress-bar-animated"
+            role="progressbar"
+            style="width: 100%"
+          ></div>
+        </div>
+        <p>Processing alerts and sending emails...</p>
+        <small class="text-muted">This may take a few moments.</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Results Modal -->
+<div class="modal fade" id="resultsModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Email Sending Results</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body" id="resultsContent">
+        <!-- Results will be populated here -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <a href="{{ url_for('index') }}" class="btn btn-primary"
+          >Go to Dashboard</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block scripts %}
+<script>
+  function sendAlerts() {
+    if (
+      !confirm(
+        "This will send email alerts to all relevant stakeholders. Continue?"
+      )
+    ) {
+      return;
+    }
+
+    // Show processing modal
+    $("#processingModal").modal("show");
+
+    // Send AJAX request
+    $.post("/send_alerts/{{ filename }}")
+      .done(function (response) {
+        $("#processingModal").modal("hide");
+
+        if (response.success) {
+          showResults(response);
+        } else {
+          alert("Error: " + response.error);
+        }
+      })
+      .fail(function () {
+        $("#processingModal").modal("hide");
+        alert("Error sending alerts. Please try again.");
+      });
+  }
+
+  function showResults(data) {
+    const content = `
+        <div class="alert alert-success">
+            <h6><i class="fas fa-check-circle"></i> Processing Complete!</h6>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <p><strong>Total Pages:</strong> ${data.total_pages}</p>
+                <p><strong>Alerts Generated:</strong> ${data.alerts_generated}</p>
+            </div>
+            <div class="col-6">
+                <p><strong>Emails Sent:</strong> ${data.emails_sent}</p>
+                <p><strong>Errors:</strong> ${data.errors}</p>
+            </div>
+        </div>
+        <p><strong>Processing Time:</strong> ${data.processing_time} seconds</p>
+    `;
+
+    $("#resultsContent").html(content);
+    $("#resultsModal").modal("show");
+  }
+</script>
+{% endblock %}

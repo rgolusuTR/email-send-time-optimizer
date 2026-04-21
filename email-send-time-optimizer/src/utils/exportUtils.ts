@@ -73,7 +73,7 @@ async function exportToPDF(
     yPosition += 6;
   }
   if (filters.organizationType !== "All") {
-    doc.text(`Organization Type: ${filters.organizationType}`, 14, yPosition);
+    doc.text(`Marketing Team GTM: ${filters.organizationType}`, 14, yPosition);
     yPosition += 6;
   }
   if (filters.campaignType !== "All") {
@@ -230,7 +230,7 @@ async function exportToExcel(
     [],
     ["Filters"],
     ["Business Unit", results.metadata.filters.businessUnit],
-    ["Organization Type", results.metadata.filters.organizationType],
+    ["Marketing Team GTM", results.metadata.filters.organizationType],
     ["Campaign Type", results.metadata.filters.campaignType],
     [],
     ["Top Recommendations"],

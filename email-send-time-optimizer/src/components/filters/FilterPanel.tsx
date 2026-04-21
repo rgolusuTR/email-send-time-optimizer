@@ -90,10 +90,10 @@ export function FilterPanel({
 
         <Box>
           <FormControl fullWidth>
-            <InputLabel>Organization Type</InputLabel>
+            <InputLabel>Marketing Team GTM</InputLabel>
             <Select
               value={filters.organizationType}
-              label="Organization Type"
+              label="Marketing Team GTM"
               onChange={(e) =>
                 onChange({ ...filters, organizationType: e.target.value })
               }

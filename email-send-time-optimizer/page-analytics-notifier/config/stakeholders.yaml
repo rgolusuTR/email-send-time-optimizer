@@ -1,0 +1,32 @@
+# Stakeholder mapping for page notifications
+# Maps URL patterns to responsible email addresses
+
+stakeholders:
+  # Exact URL matches (highest priority)
+  exact_matches:
+    "/about-us/": "marketing@company.com"
+    "/contact/": "support@company.com"
+    "/careers/": "hr@company.com"
+
+  # Pattern-based matches (regex patterns)
+  pattern_matches:
+    "^/products/.*": "product-team@company.com"
+    "^/blog/.*": "content-team@company.com"
+    "^/support/.*": "support@company.com"
+    "^/legal/.*": "legal@company.com"
+    "^/news/.*": "marketing@company.com"
+    "^/docs/.*": "tech-docs@company.com"
+
+  # Department-based fallbacks
+  department_fallbacks:
+    marketing: "marketing@company.com"
+    support: "support@company.com"
+    product: "product-team@company.com"
+    content: "content-team@company.com"
+    hr: "hr@company.com"
+    legal: "legal@company.com"
+    tech: "tech-docs@company.com"
+# Example usage:
+# - /about-us/ -> marketing@company.com (exact match)
+# - /products/laptop/ -> product-team@company.com (pattern match)
+# - /random-page/ -> admin@company.com (default from settings.yaml)

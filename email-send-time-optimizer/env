@@ -1,0 +1,7 @@
+# .env file for LiteLLM configuration
+
+# Your Anthropic API key (required for accessing Claude models)
+ANTHROPIC_API_KEY=sk-iqkyvubXVhSFauT0U5Trgg
+
+# Master key for authenticating requests to LiteLLM
+LITELLM_MASTER_KEY=your_litellm_master_key_here

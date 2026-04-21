@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AEM Automation Agent - Web UI</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .main-container {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        margin: 20px auto;
+        max-width: 1200px;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 15px 15px 0 0;
+        text-align: center;
+      }
+
+      .status-badge {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9em;
+        font-weight: bold;
+        margin-left: 10px;
+      }
+
+      .status-idle {
+        background: #6c757d;
+        color: white;
+      }
+      .status-ready {
+        background: #28a745;
+        color: white;
+      }
+      .status-working {
+        background: #ffc107;
+        color: black;
+      }
+      .status-error {
+        background: #dc3545;
+        color: white;
+      }
+
+      .command-input {
+        border: 2px solid #e9ecef;
+        border-radius: 10px;
+        padding: 15px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+      }
+
+      .command-input:focus {
+        border-color: #4facfe;
+        box-shadow: 0 0 0 0.2rem rgba(79, 172, 254, 0.25);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        border: none;
+        border-radius: 10px;
+        padding: 12px 30px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+      }
+
+      .log-container {
+        background: #f8f9fa;
+        border-radius: 10px;
+        max-height: 400px;
+        overflow-y: auto;
+        border: 1px solid #e9ecef;
+      }
+
+      .log-entry {
+        padding: 8px 15px;
+        border-bottom: 1px solid #e9ecef;
+        font-family: "Courier New", monospace;
+        font-size: 0.9em;
+      }
+
+      .log-entry:last-child {
+        border-bottom: none;
+      }
+
+      .log-info {
+        color: #17a2b8;
+      }
+      .log-success {
+        color: #28a745;
+      }
+      .log-error {
+        color: #dc3545;
+      }
+      .log-warning {
+        color: #ffc107;
+      }
+
+      .example-commands {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .example-command {
+        background: white;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        padding: 10px 15px;
+        margin: 10px 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .example-command:hover {
+        border-color: #4facfe;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .screenshot-gallery {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding: 10px 0;
+      }
+
+      .screenshot-item {
+        min-width: 200px;
+        background: white;
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .loading-spinner {
+        display: none;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .parser-preview {
+        background: #e3f2fd;
+        border-radius: 10px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #2196f3;
+      }
+
+      .action-item {
+        background: white;
+        border-radius: 8px;
+        padding: 10px;
+        margin: 5px 0;
+        border-left: 3px solid #4facfe;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="main-container">
+        <!-- Header -->
+        <div class="header">
+          <h1><i class="fas fa-robot"></i> AEM Automation Agent</h1>
+          <p class="mb-0">
+            Natural Language Interface for Adobe Experience Manager
+          </p>
+          <span id="status-badge" class="status-badge status-idle">Idle</span>
+        </div>
+
+        <!-- Main Content -->
+        <div class="p-4">
+          <!-- Connection Status -->
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body text-center">
+                  <h5 class="card-title">
+                    <i class="fas fa-plug"></i> Connection
+                  </h5>
+                  <button id="connect-btn" class="btn btn-primary">
+                    <i class="fas fa-play"></i> Initialize Agent
+                  </button>
+                  <button
+                    id="disconnect-btn"
+                    class="btn btn-danger ms-2"
+                    style="display: none"
+                  >
+                    <i class="fas fa-stop"></i> Disconnect
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body text-center">
+                  <h5 class="card-title">
+                    <i class="fas fa-tasks"></i> Current Task
+                  </h5>
+                  <div id="current-task" class="text-muted">No active task</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Command Input -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="mb-0">
+                    <i class="fas fa-terminal"></i> Command Interface
+                  </h5>
+                </div>
+                <div class="card-body">
+                  <div class="input-group mb-3">
+                    <input
+                      type="text"
+                      id="command-input"
+                      class="form-control command-input"
+                      placeholder="Enter your command in natural language (e.g., 'Create a page called Test Page')"
+                    />
+                    <button id="execute-btn" class="btn btn-primary" disabled>
+                      <i class="fas fa-paper-plane"></i> Execute
+                    </button>
+                  </div>
+                  <div class="d-flex gap-2">
+                    <button
+                      id="test-parser-btn"
+                      class="btn btn-outline-info btn-sm"
+                    >
+                      <i class="fas fa-search"></i> Test Parser
+                    </button>
+                    <button
+                      id="clear-logs-btn"
+                      class="btn btn-outline-secondary btn-sm"
+                    >
+                      <i class="fas fa-trash"></i> Clear Logs
+                    </button>
+                  </div>
+                  <div class="mt-2">
+                    <small class="text-muted">
+                      <i class="fas fa-info-circle"></i>
+                      You can test commands anytime, but need to initialize the
+                      agent to execute them.
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Parser Preview -->
+          <div id="parser-preview" class="parser-preview" style="display: none">
+            <h6><i class="fas fa-eye"></i> Parser Preview</h6>
+            <div id="parser-content"></div>
+          </div>
+
+          <!-- Example Commands -->
+          <div class="example-commands">
+            <h5><i class="fas fa-lightbulb"></i> Example Commands</h5>
+            <div class="row">
+              <div class="col-md-6">
+                <div
+                  class="example-command"
+                  data-command="Create a page called 'Product Launch'"
+                >
+                  <strong>Simple Page Creation:</strong><br />
+                  <code>Create a page called 'Product Launch'</code>
+                </div>
+                <div
+                  class="example-command"
+                  data-command="Add an Article Paragraph component and fill it with 'Welcome to our site'"
+                >
+                  <strong>Add Component with Content:</strong><br />
+                  <code
+                    >Add an Article Paragraph component and fill it with
+                    'Welcome to our site'</code
+                  >
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div
+                  class="example-command"
+                  data-command="Create a page called 'News Article', add an Article Paragraph component, and fill it with 'Breaking news update'"
+                >
+                  <strong>Complete Workflow:</strong><br />
+                  <code
+                    >Create a page called 'News Article', add an Article
+                    Paragraph component, and fill it with 'Breaking news
+                    update'</code
+                  >
+                </div>
+                <div
+                  class="example-command"
+                  data-command="Make a page named 'About Us' under the company folder"
+                >
+                  <strong>Page with Location:</strong><br />
+                  <code
+                    >Make a page named 'About Us' under the company folder</code
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Logs and Screenshots -->
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="mb-0">
+                    <i class="fas fa-list"></i> Activity Logs
+                  </h5>
+                </div>
+                <div class="card-body p-0">
+                  <div id="logs-container" class="log-container">
+                    <div class="log-entry text-muted">
+                      <i class="fas fa-info-circle"></i> Ready to start. Click
+                      "Initialize Agent" to begin.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="mb-0">
+                    <i class="fas fa-camera"></i> Screenshots
+                  </h5>
+                </div>
+                <div class="card-body">
+                  <div id="screenshots-container">
+                    <div class="text-muted text-center">
+                      <i class="fas fa-image fa-2x mb-2"></i><br />
+                      Screenshots will appear here after executing commands
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Loading Spinner -->
+          <div id="loading-spinner" class="loading-spinner">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2">Processing your request...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      class AEMAgentUI {
+        constructor() {
+          this.sessionId = null;
+          this.status = "idle";
+          this.statusUpdateInterval = null;
+          this.initializeEventListeners();
+        }
+
+        initializeEventListeners() {
+          // Connect button
+          document
+            .getElementById("connect-btn")
+            .addEventListener("click", () => {
+              this.initializeAgent();
+            });
+
+          // Disconnect button
+          document
+            .getElementById("disconnect-btn")
+            .addEventListener("click", () => {
+              this.disconnectAgent();
+            });
+
+          // Execute button
+          document
+            .getElementById("execute-btn")
+            .addEventListener("click", () => {
+              this.executeCommand();
+            });
+
+          // Test parser button
+          document
+            .getElementById("test-parser-btn")
+            .addEventListener("click", () => {
+              this.testParser();
+            });
+
+          // Clear logs button
+          document
+            .getElementById("clear-logs-btn")
+            .addEventListener("click", () => {
+              this.clearLogs();
+            });
+
+          // Command input enter key
+          document
+            .getElementById("command-input")
+            .addEventListener("keypress", (e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                this.executeCommand();
+              }
+            });
+
+          // Example commands
+          document.querySelectorAll(".example-command").forEach((cmd) => {
+            cmd.addEventListener("click", () => {
+              const command = cmd.getAttribute("data-command");
+              document.getElementById("command-input").value = command;
+            });
+          });
+        }
+
+        async initializeAgent() {
+          try {
+            this.showLoading(true);
+
+            // Create session
+            const sessionResponse = await fetch("/api/session/create", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+            });
+            const sessionData = await sessionResponse.json();
+
+            if (!sessionData.success) {
+              throw new Error(sessionData.error);
+            }
+
+            this.sessionId = sessionData.session_id;
+            this.addLog("Session created successfully", "success");
+
+            // Initialize agent
+            const initResponse = await fetch("/api/session/initialize", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+            });
+            const initData = await initResponse.json();
+
+            if (!initData.success) {
+              throw new Error(initData.error);
+            }
+
+            this.addLog("Agent initialization started...", "info");
+            this.updateStatus("working");
+
+            // Start status polling
+            this.startStatusPolling();
+
+            // Update UI
+            document.getElementById("connect-btn").style.display = "none";
+            document.getElementById("disconnect-btn").style.display =
+              "inline-block";
+          } catch (error) {
+            this.addLog(`Initialization failed: ${error.message}`, "error");
+            this.updateStatus("error");
+          } finally {
+            this.showLoading(false);
+          }
+        }
+
+        async disconnectAgent() {
+          try {
+            if (this.sessionId) {
+              await fetch("/api/session/cleanup", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+              });
+            }
+
+            this.sessionId = null;
+            this.updateStatus("idle");
+            this.stopStatusPolling();
+
+            // Update UI
+            document.getElementById("connect-btn").style.display =
+              "inline-block";
+            document.getElementById("disconnect-btn").style.display = "none";
+            document.getElementById("execute-btn").disabled = true;
+            document.getElementById("current-task").textContent =
+              "No active task";
+
+            this.addLog("Agent disconnected", "info");
+          } catch (error) {
+            this.addLog(`Disconnect failed: ${error.message}`, "error");
+          }
+        }
+
+        async executeCommand() {
+          const command = document.getElementById("command-input").value.trim();
+          if (!command) return;
+
+          try {
+            const response = await fetch("/api/command/execute", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ command }),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+              this.addLog(`Command queued: ${command}`, "info");
+              document.getElementById("command-input").value = "";
+            } else {
+              this.addLog(`Command failed: ${data.error}`, "error");
+            }
+          } catch (error) {
+            this.addLog(`Execute error: ${error.message}`, "error");
+          }
+        }
+
+        async testParser() {
+          const command = document.getElementById("command-input").value.trim();
+          if (!command) return;
+
+          try {
+            const response = await fetch("/api/parser/test", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ command }),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+              this.showParserPreview(data);
+            } else {
+              this.addLog(`Parser test failed: ${data.error}`, "error");
+            }
+          } catch (error) {
+            this.addLog(`Parser test error: ${error.message}`, "error");
+          }
+        }
+
+        showParserPreview(data) {
+          const preview = document.getElementById("parser-preview");
+          const content = document.getElementById("parser-content");
+
+          let html = '<div class="mb-3">';
+          html += `<strong>Page:</strong> ${data.parsed.page_name || "N/A"} (${
+            data.parsed.page_title || "N/A"
+          })<br>`;
+          html += `<strong>Path:</strong> ${
+            data.parsed.target_path
+              ? data.parsed.target_path.join(" → ")
+              : "Default"
+          }<br>`;
+          html += `<strong>Actions:</strong> ${data.parsed.actions.length}`;
+          html += "</div>";
+
+          if (data.parsed.actions.length > 0) {
+            html += '<div class="mb-3"><strong>Actions:</strong>';
+            data.parsed.actions.forEach((action, index) => {
+              html += `<div class="action-item">
+                            <strong>${index + 1}. ${action.type}</strong><br>
+                            <small>${JSON.stringify(
+                              action.parameters,
+                              null,
+                              2
+                            )}</small>
+                        </div>`;
+            });
+            html += "</div>";
+          }
+
+          if (data.execution_plan.length > 0) {
+            html += "<div><strong>Execution Plan:</strong><ul>";
+            data.execution_plan.forEach((step) => {
+              html += `<li>${step}</li>`;
+            });
+            html += "</ul></div>";
+          }
+
+          content.innerHTML = html;
+          preview.style.display = "block";
+        }
+
+        startStatusPolling() {
+          this.statusUpdateInterval = setInterval(() => {
+            this.updateSessionStatus();
+          }, 2000);
+        }
+
+        stopStatusPolling() {
+          if (this.statusUpdateInterval) {
+            clearInterval(this.statusUpdateInterval);
+            this.statusUpdateInterval = null;
+          }
+        }
+
+        async updateSessionStatus() {
+          if (!this.sessionId) return;
+
+          try {
+            const response = await fetch("/api/session/status");
+            const data = await response.json();
+
+            if (data.success) {
+              this.updateStatus(data.status);
+
+              // Update current task
+              const taskElement = document.getElementById("current-task");
+              taskElement.textContent = data.current_task || "No active task";
+
+              // Update logs
+              if (data.logs && data.logs.length > 0) {
+                data.logs.forEach((log) => {
+                  this.addLogEntry(log);
+                });
+              }
+
+              // Update screenshots
+              if (data.screenshots && data.screenshots.length > 0) {
+                this.updateScreenshots(data.screenshots);
+              }
+            }
+          } catch (error) {
+            console.error("Status update failed:", error);
+          }
+        }
+
+        updateStatus(status) {
+          this.status = status;
+          const badge = document.getElementById("status-badge");
+
+          // Remove all status classes
+          badge.className = "status-badge";
+
+          // Add current status class
+          badge.classList.add(`status-${status}`);
+          badge.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+
+          // Enable/disable controls based on status
+          const commandInput = document.getElementById("command-input");
+          const executeBtn = document.getElementById("execute-btn");
+
+          // Always keep command input enabled for testing parser
+          commandInput.disabled = false;
+
+          if (status === "ready") {
+            executeBtn.disabled = false;
+          } else {
+            executeBtn.disabled = true;
+          }
+        }
+
+        addLog(message, level = "info") {
+          const log = {
+            timestamp: new Date().toISOString(),
+            message: message,
+            level: level,
+          };
+          this.addLogEntry(log);
+        }
+
+        addLogEntry(log) {
+          const container = document.getElementById("logs-container");
+          const entry = document.createElement("div");
+          entry.className = `log-entry log-${log.level}`;
+
+          const time = new Date(log.timestamp).toLocaleTimeString();
+          entry.innerHTML = `<span class="text-muted">[${time}]</span> ${log.message}`;
+
+          container.appendChild(entry);
+          container.scrollTop = container.scrollHeight;
+
+          // Keep only last 50 entries
+          while (container.children.length > 50) {
+            container.removeChild(container.firstChild);
+          }
+        }
+
+        updateScreenshots(screenshots) {
+          const container = document.getElementById("screenshots-container");
+
+          if (screenshots.length === 0) return;
+
+          container.innerHTML = "";
+          screenshots.forEach((screenshot) => {
+            const item = document.createElement("div");
+            item.className = "screenshot-item";
+            item.innerHTML = `
+                        <div class="text-center">
+                            <i class="fas fa-image fa-2x mb-2"></i><br>
+                            <small>${new Date(
+                              screenshot.timestamp
+                            ).toLocaleTimeString()}</small><br>
+                            <small class="text-muted">${screenshot.command.substring(
+                              0,
+                              30
+                            )}...</small>
+                        </div>
+                    `;
+            container.appendChild(item);
+          });
+        }
+
+        clearLogs() {
+          const container = document.getElementById("logs-container");
+          container.innerHTML =
+            '<div class="log-entry text-muted"><i class="fas fa-info-circle"></i> Logs cleared</div>';
+        }
+
+        showLoading(show) {
+          const spinner = document.getElementById("loading-spinner");
+          spinner.style.display = show ? "block" : "none";
+        }
+      }
+
+      // Initialize the UI when page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        new AEMAgentUI();
+      });
+    </script>
+  </body>
+</html>
